@@ -1,19 +1,74 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { useState } from "react";
+import { IoEye, IoEyeOff } from "react-icons/io5";
+import axios from "axios";
+import Swal from "sweetalert2";
+import useAuth from "../hooks/useAuth";
+
+
+
+
+
 
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const [errorPass, setErrorPass] = useState('');
+    const [displayPass, setDisplayPass] = useState(false);
+    const [displayConfirmPass, setDisplayConfirmPass] = useState(false);
+  const {createUser, setUser, updateUserProfile, setLoading } = useAuth()
+  const navigate = useNavigate()
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+
+        const userName = data.name;
+        const userEmail = data.email;
+        const userImage = data.image[0];
+        const userPass = data.password;
         setErrorPass("")
         if (data.password !== data.confirmPass) {
             setErrorPass('password and confirm Password doesn`t match')
             return
+        }
+
+        const formData = new FormData();
+        formData.append('image', userImage)
+
+        try {
+            setLoading(true)
+
+            // image upload section
+            const { data } = await axios.post(
+                `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY
+                }`,
+                formData
+            )
+           const image = data.data.display_url
+
+            // user register
+            const result = await createUser(userEmail, userPass)
+            setUser(result.user)
+            await updateUserProfile(userName, image)
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Successfully signed up",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            navigate('/')         
+        }
+        catch (error) {
+            console.log(error)
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: {error},
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
         }
 
     }
@@ -57,12 +112,12 @@ const SignUp = () => {
                 </div>
 
                 {/* password */}
-                <div className="form-control">
+                <div className="form-control relative">
                     <label>
                         <span>Password *</span>
                     </label>
                     <input
-                        type="password"
+                        type={displayPass ? "text" : "password"}
                         placeholder="password"
                         name="password"
                         {...register("password", {
@@ -76,15 +131,16 @@ const SignUp = () => {
                     {errors.password?.type === 'minLength' && <span className="text-lg text-red-500">Password should be at least 6 character</span>}
                     {errors.password?.type === 'maxLength' && <span className="text-lg text-red-500">Password should not be more than 20 character </span>}
                     {errors.password?.type === 'pattern' && <span className="text-lg text-red-500">Password must have one uppercase, one lowercase, one number and one special character</span>}
+                    <span className="absolute top-9 right-2" onClick={() => setDisplayPass(!displayPass)}>{displayPass ? <IoEyeOff className="text-xl"></IoEyeOff> : <IoEye className="text-xl"></IoEye>}</span>
                 </div>
 
                 {/* confirm password */}
-                <div className="form-control">
+                <div className="form-control relative">
                     <label>
                         <span>Confirm Password *</span>
                     </label>
                     <input
-                        type="password"
+                        type={displayConfirmPass ? "text" : "password"}
                         placeholder="confirm password"
                         name="confirmPass"
                         {...register("confirmPass", {
@@ -99,6 +155,7 @@ const SignUp = () => {
                     {errors.confirmPass?.type === 'maxLength' && <span className="text-lg text-red-500">Confirm Password should not be more than 20 character </span>}
                     {errors.confirmPass?.type === 'pattern' && <span className="text-lg text-red-500">Confirm Password must have one uppercase, one lowercase, one number and one special character</span>}
                     {errorPass && <span className="text-lg text-red-500">{errorPass}</span>}
+                    <span className="absolute top-9 right-2" onClick={() => setDisplayConfirmPass(!displayConfirmPass)}>{displayConfirmPass ? <IoEyeOff className="text-xl"></IoEyeOff> : <IoEye className="text-xl"></IoEye>}</span>
                 </div>
 
                 {/* terms and service */}

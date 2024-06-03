@@ -19,3 +19,4 @@ The NPm packages I have used:
 4. npm install react hot toast
 5. npm install react sweet alert
 6. npm install react hook form
+7. npm install axios
