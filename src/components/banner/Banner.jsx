@@ -1,8 +1,8 @@
-
+import banner from '../../../public/images/banner.png'
 
 const Banner = () => {
     return (
-        <div className="font-poppins px-[60px] mt-8">
+        <div style={{ backgroundImage: `url(${banner})` }} className='h-[85vh] bg-no-repeat bg-center bg-cover font-poppins px-[60px] rounded-xl'>
             this is banner
         </div>
     );

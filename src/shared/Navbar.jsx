@@ -6,6 +6,7 @@ import { MdDarkMode } from 'react-icons/md';
 
 import Swal from 'sweetalert2';
 import useAuth from '../hooks/useAuth';
+import { CgProfile } from 'react-icons/cg';
 
 const Navbar = () => {
     const [theme, setTheme] = useState("light");
@@ -27,7 +28,7 @@ const Navbar = () => {
         }
     }
 
-    
+
     const handleLogOut = async () => {
 
         try {
@@ -59,14 +60,37 @@ const Navbar = () => {
                     <h1 className='text-3xl font-bold text-[#35DC75CC]'>SurveyAtlas</h1>
                 </Link>
             </div>
+
             <div className='flex items-center gap-3'>
                 <Navmenu address={"/"} label={"Home"}></Navmenu>
-                {
-                    user ? <button onClick={handleLogOut} className='text-white px-3 py-2 font-medium text-lg hover:text-[#859770] hover:bg-[white] hover:rounded-xl'>Log out</button> : <div className='flex items-center gap-3'>
-                        <Navmenu address={"/login"} label={"Login"}></Navmenu>
-                        <Navmenu address={"/signup"} label={"Sign Up"}></Navmenu>
-                    </div>
-                }
+            </div>
+
+            <div>
+                <details className="dropdown">
+                    <summary className="btn bg-transparent border-none hover:bg-transparent">
+                        {
+                            user ? <img className='w-[4vw] rounded-full' src={user?.photoURL} alt="user-photo" /> : <CgProfile className='text-4xl'></CgProfile>
+                        }
+                    </summary>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-[#859770] rounded-box w-[10vw]">
+                        {user ? <div className='flex flex-col justify-start'>
+                            {
+                                user && <div>
+                                    <h1 className='text-[#35DC75CC] px-3 py-2 text-lg font-medium'>{user?.displayName}</h1>
+                                </div>
+                            }
+                            <div>
+                                <Navmenu address={"/profile"} label={"Profile"}></Navmenu>
+                            </div>
+                            <div>
+                                <button onClick={handleLogOut} className='text-white px-3 py-2 font-medium text-lg hover:bg-[white] hover:text-[#859770] rounded-xl'>Log out</button>
+                            </div>
+                        </div> : <> <li><Navmenu address={"/login"} label={"Login"}></Navmenu></li>
+                            <li><Navmenu address={"/signup"} label={"Sign Up"}></Navmenu></li>
+                        </>}
+
+                    </ul>
+                </details>
             </div>
             <div>
                 <div className="dropdown">
@@ -77,11 +101,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            <div>
-                {
-                    user && <h1>{user?.displayName}</h1>
-                }
-            </div>
+
         </div>
     );
 };
