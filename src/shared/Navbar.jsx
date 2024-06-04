@@ -69,7 +69,7 @@ const Navbar = () => {
                 <details className="dropdown">
                     <summary className="btn bg-transparent border-none hover:bg-transparent">
                         {
-                            user ? <img className='w-[4vw] rounded-full' src={user?.photoURL} alt="user-photo" /> : <CgProfile className='text-4xl'></CgProfile>
+                            user ? <img className='lg:w-[3vw] lg:h-[3vw] rounded-full' src={user?.photoURL} alt="user-photo" /> : <CgProfile className='text-4xl'></CgProfile>
                         }
                     </summary>
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-[#859770] rounded-box w-[10vw]">

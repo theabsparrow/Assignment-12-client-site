@@ -1,4 +1,4 @@
-import {useState } from "react";
+import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,12 +6,19 @@ import { useForm } from "react-hook-form";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const Login = () => {
-    const { userLogin, setUser } = useAuth()
+    const { userLogin, setUser, setLoading, loading, user, loginWithGoogle } = useAuth()
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const [displayPass, setDisplayPass] = useState(false);
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+    }, [navigate, user])
 
     const onSubmit = async (data) => {
         const userEmail = data.email;
@@ -25,23 +32,52 @@ const Login = () => {
                 title: "Login successfully!",
                 showConfirmButton: false,
                 timer: 1500
-              });
-              navigate('/')
+            });
+            navigate('/')
 
         }
-        catch (error){
+        catch (error) {
+            setLoading(false)
             console.log(error)
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
                 text: "invalid email or password",
                 footer: '<a href="#">Why do I have this issue?</a>'
-              });
+            });
         }
     }
+
+    const handleGoogleLogin = async () => {
+        try {
+            await loginWithGoogle()
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Successfully login with google",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate('/')
+        }
+        catch (error) {
+            setLoading(false)
+            console.log(error)
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "invalid email or password",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+    }
+    if (user) {
+        return
+    }
     return (
-        <div className="font-poppins">
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body w-[35vw] mx-auto shadow-xl mt-5 border rounded-xl">
+        <div className="font-poppins card-body w-[35vw] mx-auto shadow-xl mt-5 border rounded-xl">
+
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="text-center">
                     <p className="text-lg font-medium">welcome to <span className="text-[#35DC75]">SurveyAtlass</span></p>
                     <h1 className="text-3xl font-semibold text-[#35DC75] mt-2">Login Now</h1>
@@ -85,15 +121,28 @@ const Login = () => {
                 </div>
 
                 <div className="form-control">
-                    <button className="btn bg-[#859770] hover:bg-[#35DC75] text-lg">Login</button>
+                    <button
+                        disabled={loading}
+                        className="btn bg-[#859770] hover:bg-[#35DC75] text-lg"
+                        type="submit">
+                        {loading ? <TbFidgetSpinner className="animate-spin m-auto"></TbFidgetSpinner> : "Sign Up"}
+                    </button>
                 </div>
+            </form>
 
+            <div>
                 <div>
                     <div className="divider">Social Login</div>
                 </div>
 
                 <div className="space-x-4 mx-auto shadow-xl rounded-xl px-8 py-1 border-[1px] border-[#35DC75] flex justify-center items-center ">
-                    <button><FcGoogle className="text-3xl shadow-xl rounded-full hover:scale-110 duration-300"></FcGoogle></button>
+                    <button 
+                    disabled={loading}
+                    onClick={handleGoogleLogin}
+                    ><FcGoogle
+                        className="disabled:cursor-not-allowed cursor-pointer text-3xl shadow-xl rounded-full hover:scale-110 duration-300">
+                     </FcGoogle>
+                    </button>
                     <button><FaGithub className="text-3xl shadow-xl rounded-full hover:scale-110 duration-300"></FaGithub></button>
                 </div>
 
@@ -104,10 +153,7 @@ const Login = () => {
                 <div className="text-center">
                     <h1>Go to <Link className="bg-[#859770] px-2 py-1 rounded-xl text-white hover:bg-[#289521] duration-200" to='/'>Home</Link></h1>
                 </div>
-
-            </form>
-
-
+            </div>
 
         </div>
     );

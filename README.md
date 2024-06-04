@@ -20,3 +20,4 @@ The NPm packages I have used:
 5. npm install react sweet alert
 6. npm install react hook form
 7. npm install axios
+8. npm install react simple captcha
