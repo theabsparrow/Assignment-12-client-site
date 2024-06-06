@@ -5,6 +5,7 @@ import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import SignUp from "../pages/SignUp";
 import Profile from "../pages/Profile";
+import AllSurveys from "../pages/AllSurveys";
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <Profile></Profile>
+            },
+            {
+                path: '/allsurveys',
+                element: <AllSurveys></AllSurveys>
             }
         ]
     },

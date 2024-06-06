@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { Helmet } from "react-helmet";
 
 
 
@@ -139,7 +140,9 @@ const SignUp = () => {
 
     return (
         <div className="card-body w-[35vw] mx-auto shadow-xl mt-5 border rounded-xl font-poppins">
-
+            <Helmet>
+                <title>Sign Up || surveyAtlas</title>
+            </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <div className="text-center">
                     <p className="text-lg font-medium">welcome to <span className="text-[#35DC75]">SurveyAtlass</span></p>

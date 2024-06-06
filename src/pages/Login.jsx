@@ -7,6 +7,7 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const { userLogin, setUser, setLoading, loading, user, loginWithGoogle } = useAuth()
@@ -76,7 +77,9 @@ const Login = () => {
     }
     return (
         <div className="font-poppins card-body w-[35vw] mx-auto shadow-xl mt-5 border rounded-xl">
-
+            <Helmet>
+                <title>Login || surveyAtlas</title>
+            </Helmet>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="text-center">
                     <p className="text-lg font-medium">welcome to <span className="text-[#35DC75]">SurveyAtlass</span></p>
@@ -136,12 +139,12 @@ const Login = () => {
                 </div>
 
                 <div className="space-x-4 mx-auto shadow-xl rounded-xl px-8 py-1 border-[1px] border-[#35DC75] flex justify-center items-center ">
-                    <button 
-                    disabled={loading}
-                    onClick={handleGoogleLogin}
+                    <button
+                        disabled={loading}
+                        onClick={handleGoogleLogin}
                     ><FcGoogle
                         className="disabled:cursor-not-allowed cursor-pointer text-3xl shadow-xl rounded-full hover:scale-110 duration-300">
-                     </FcGoogle>
+                        </FcGoogle>
                     </button>
                     <button><FaGithub className="text-3xl shadow-xl rounded-full hover:scale-110 duration-300"></FaGithub></button>
                 </div>

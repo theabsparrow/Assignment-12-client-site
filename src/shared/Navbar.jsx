@@ -63,6 +63,7 @@ const Navbar = () => {
 
             <div className='flex items-center gap-3'>
                 <Navmenu address={"/"} label={"Home"}></Navmenu>
+                <Navmenu address={"/allsurveys"} label={"All Surveys"}></Navmenu>
             </div>
 
             <div>
