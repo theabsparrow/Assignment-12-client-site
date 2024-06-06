@@ -6,12 +6,15 @@ import useSurveys from "../hooks/useSurveys";
 
 const AllSurveys = () => {
     const [filter, setFilter] = useState('');
-    const [surveys] = useSurveys(filter);
+    const [sort , setSort] = useState("");
+    const [surveys] = useSurveys(filter, sort);
 
     const handleFilter = (e) => {
         setFilter(e.target.value)
     }
-    console.log(filter)
+    const handleSort = e => {
+        setSort(e.target.value)
+    }
     return (
         <div className="font-poppins px-[60px] mt-6 space-y-5" >
             <div>
@@ -31,11 +34,10 @@ const AllSurveys = () => {
                 </div>
                 <div className="flex justify-center items-center space-x-2">
                     <label htmlFor="sort by" className="text-xl font-medium text-[#859770]"> Sort By:</label>
-                    <select name="votes" id="votes" className=" outline-none rounded-xl bg-[#859770] p-2 text-white">
+                    <select onChange={handleSort} name="votes" id="votes" className=" outline-none rounded-xl bg-[#859770] p-2 text-white">
                         <option value="">Vote</option>
                         <option value="dsc">Descending Order</option>
                         <option value="asc">Ascending Order</option>
-
                     </select>
                 </div>
             </div>
