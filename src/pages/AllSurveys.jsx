@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AllSurvey from "../allSurvey/AllSurvey";
 import useSurveys from "../hooks/useSurveys";
+import { Helmet } from "react-helmet";
 
 
 
@@ -17,11 +18,14 @@ const AllSurveys = () => {
     }
     return (
         <div className="font-poppins px-[60px] mt-6 space-y-5" >
-            <div>
-                <h1>Total Survey: {surveys.length}</h1>
+            <Helmet>
+                <title>All Surveys || SurveyAtlas</title>
+            </Helmet>
+            <div className="flex">
+                <h1 className="bg-[#859770] px-2 py-1 rounded-xl text-white">Total Survey: <span className="bg-[#35DC7569] rounded-xl px-1">{surveys.length}</span></h1>
             </div>
             <div className="flex items-start justify-center space-x-7">
-                <div className="mb-[160px] flex justify-center items-center space-x-2">
+                <div className="mb-[130px] flex justify-center items-center space-x-2">
                     <label htmlFor="filter by" className="text-xl font-medium text-[#859770]"> Filter By:</label>
                     <select onChange={handleFilter} name="category" id="category" className=" outline-none rounded-xl bg-[#859770] p-2 text-white">
                         <option value="">All</option>

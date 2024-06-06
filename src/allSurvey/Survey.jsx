@@ -16,11 +16,11 @@ const Survey = ({ category, description, title, creationTime, deadline, totalNoV
     return (
         <div className='flex items-center justify-center border rounded-xl p-5 font-poppins shadow-xl gap-5'>
             <div>
-                {category === "Science" && <img className='w-[20vw]' src={Science} alt="" />}
-                {category === "Education" && <img className='w-[20vw]' src={Edication} alt="" />}
-                {category === "Agriculture" && <img className='w-[20vw]' src={Agriculture} alt="" />}
-                {category === "Nature" && <img className='w-[20vw]' src={Nature} alt="" />}
-                {category === "Traveling" && <img className='w-[20vw]' src={Travelling} alt="" />}
+                {category === "Science" && <img className='w-[20vw] rounded-xl' src={Science} alt="" />}
+                {category === "Education" && <img className='w-[20vw] rounded-xl' src={Edication} alt="" />}
+                {category === "Agriculture" && <img className='w-[20vw] rounded-xl' src={Agriculture} alt="" />}
+                {category === "Nature" && <img className='w-[20vw] rounded-xl' src={Nature} alt="" />}
+                {category === "Traveling" && <img className='w-[20vw] rounded-xl' src={Travelling} alt="" />}
             </div>
 
             <div className='px-4'>

@@ -53,7 +53,7 @@ const Navbar = () => {
         }
     }
     return (
-        <div className="font-poppins mx-[60px] px-8 rounded-full bg-[#859770] flex items-center justify-between sticky top-0">
+        <div className="font-poppins mx-[60px] px-8 rounded-full bg-[#859770] flex items-center justify-between sticky top-0 z-20">
             <div>
                 <Link className='flex items-center'>
                     <img className='lg:w-[4vw]' src={logo} alt="logo" />
