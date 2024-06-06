@@ -57,15 +57,15 @@ const Survey = ({ category, description, title, creationTime, deadline, totalNoV
 };
 
 Survey.propTypes = {
-    category: PropTypes.object,
-    description: PropTypes.object,
-    title: PropTypes.object,
-    creationTime: PropTypes.object,
-    deadline: PropTypes.object,
-    totalNoVotes: PropTypes.object,
-    totalYesVotes: PropTypes.object,
-    totalVotes: PropTypes.object,
-    status: PropTypes.object,
+    category: PropTypes.string,
+    description: PropTypes.string,
+    title: PropTypes.string,
+    creationTime: PropTypes.string,
+    deadline: PropTypes.string,
+    totalNoVotes: PropTypes.number,
+    totalYesVotes: PropTypes.number,
+    totalVotes: PropTypes.number,
+    status: PropTypes.string,
 }
 
 export default Survey;

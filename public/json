@@ -1,0 +1,802 @@
+[
+    {
+        "title": "Interest in Space Science",
+        "description": "A survey to understand public interest in space science.",
+        "category": "Science",
+        "creationTime": "2024-06-01T10:00:00Z",
+        "deadline": "2024-07-18",
+        "status": "publish",
+        "totalVotes": 27,
+        "totalYesVotes": 21,
+        "totalNoVotes": 6,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Space News",
+                "description": "Do you follow news about space exploration?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 3
+            },
+            {
+                "id": 2,
+                "title": "Space Travel",
+                "description": "Would you like to travel to space if given a chance?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 7,
+                "negativeVote": 2
+            },
+            {
+                "id": 3,
+                "title": "Space Research",
+                "description": "Do you think space research is important?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 8,
+                "negativeVote": 1
+            }
+        ]
+    },
+    {
+        "title": "Online Learning Effectiveness",
+        "description": "A survey on the effectiveness of online learning.",
+        "category": "Education",
+        "creationTime": "2024-06-02T10:00:00Z",
+        "deadline": "2024-07-11",
+        "status": "publish",
+        "totalVotes": 24,
+        "totalYesVotes": 13,
+        "totalNoVotes": 11,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Online Classes",
+                "description": "Do you find online classes effective?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 2
+            },
+            {
+                "id": 2,
+                "title": "Interaction",
+                "description": "Do you feel interactive during online sessions?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 3
+            },
+            {
+                "id": 3,
+                "title": "Materials",
+                "description": "Are the materials provided online sufficient?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 2,
+                "negativeVote": 6
+            }
+        ]
+    },
+    {
+        "title": "Organic Farming Awareness",
+        "description": "A survey to gauge awareness about organic farming.",
+        "category": "Agriculture",
+        "creationTime": "2024-06-03T10:00:00Z",
+        "deadline": "2024-07-15",
+        "status": "publish",
+        "totalVotes": 30,
+        "totalYesVotes": 20,
+        "totalNoVotes": 10,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Organic Products",
+                "description": "Do you buy organic products?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 7,
+                "negativeVote": 3
+            },
+            {
+                "id": 2,
+                "title": "Awareness",
+                "description": "Are you aware of the benefits of organic farming?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 8,
+                "negativeVote": 2
+            },
+            {
+                "id": 3,
+                "title": "Support",
+                "description": "Do you support local organic farmers?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 5
+            }
+        ]
+    },
+    {
+        "title": "National Park Visits",
+        "description": "A survey to understand the frequency of national park visits.",
+        "category": "Nature",
+        "creationTime": "2024-06-04T10:00:00Z",
+        "deadline": "2024-07-26",
+        "status": "publish",
+        "totalVotes": 33,
+        "totalYesVotes": 21,
+        "totalNoVotes": 12,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Visits",
+                "description": "Do you visit national parks frequently?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 7,
+                "negativeVote": 4
+            },
+            {
+                "id": 2,
+                "title": "Nature",
+                "description": "Do you enjoy being in nature?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 6
+            },
+            {
+                "id": 3,
+                "title": "Photography",
+                "description": "Do you take photos of nature during your visits?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 9,
+                "negativeVote": 2
+            }
+        ]
+    },
+    {
+        "title": "Traveling Preferences",
+        "description": "A survey to understand traveling preferences.",
+        "category": "Traveling",
+        "creationTime": "2024-06-05T10:00:00Z",
+        "deadline": "2024-07-23",
+        "status": "publish",
+        "totalVotes": 21,
+        "totalYesVotes": 14,
+        "totalNoVotes": 7,
+        "questions": [
+            {
+                "id": 1,
+                "title": "International Travel",
+                "description": "Do you prefer international travel over domestic travel?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 1
+            },
+            {
+                "id": 2,
+                "title": "Solo Travel",
+                "description": "Do you enjoy traveling alone?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 3,
+                "negativeVote": 4
+            },
+            {
+                "id": 3,
+                "title": "Travel Planning",
+                "description": "Do you plan your trips in advance?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 2
+            }
+        ]
+    },
+    {
+        "title": "Interest in Robotics",
+        "description": "A survey to understand public interest in robotics.",
+        "category": "Science",
+        "creationTime": "2024-06-06T10:00:00Z",
+        "deadline": "2024-07-19",
+        "status": "publish",
+        "totalVotes": 18,
+        "totalYesVotes": 12,
+        "totalNoVotes": 6,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Robotics News",
+                "description": "Do you follow news about robotics?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 4,
+                "negativeVote": 2
+            },
+            {
+                "id": 2,
+                "title": "Robotic Applications",
+                "description": "Do you think robots should be used in everyday tasks?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 1
+            },
+            {
+                "id": 3,
+                "title": "Robotics Education",
+                "description": "Would you like to learn more about robotics?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 3,
+                "negativeVote": 3
+            }
+        ]
+    },
+    {
+        "title": "E-Learning Platforms",
+        "description": "A survey on the use of e-learning platforms.",
+        "category": "Education",
+        "creationTime": "2024-06-07T10:00:00Z",
+        "deadline": "2024-07-18",
+        "status": "publish",
+        "totalVotes": 15,
+        "totalYesVotes": 9,
+        "totalNoVotes": 6,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Usage",
+                "description": "Do you use e-learning platforms?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 3,
+                "negativeVote": 2
+            },
+            {
+                "id": 2,
+                "title": "Satisfaction",
+                "description": "Are you satisfied with the quality of e-learning platforms?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 4,
+                "negativeVote": 1
+            },
+            {
+                "id": 3,
+                "title": "Recommendation",
+                "description": "Would you recommend e-learning platforms to others?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 2,
+                "negativeVote": 3
+            }
+        ]
+    },
+    {
+        "title": "Sustainable Farming",
+        "description": "A survey to understand the adoption of sustainable farming practices.",
+        "category": "Agriculture",
+        "creationTime": "2024-06-08T10:00:00Z",
+        "deadline": "2024-07-14",
+        "status": "publish",
+        "totalVotes": 21,
+        "totalYesVotes": 11,
+        "totalNoVotes": 10,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Sustainable Practices",
+                "description": "Do you practice sustainable farming?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 2,
+                "negativeVote": 5
+            },
+            {
+                "id": 2,
+                "title": "Awareness",
+                "description": "Are you aware of the benefits of sustainable farming?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 3,
+                "negativeVote": 4
+            },
+            {
+                "id": 3,
+                "title": "Investment",
+                "description": "Would you invest in sustainable farming techniques?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 1
+            }
+        ]
+    },
+    {
+        "title": "Nature Conservation",
+        "description": "A survey to understand public support for nature conservation.",
+        "category": "Nature",
+        "creationTime": "2024-06-09T10:00:00Z",
+        "deadline": "2024-07-16",
+        "status": "publish",
+        "totalVotes": 33,
+        "totalYesVotes": 20,
+        "totalNoVotes": 13,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Support",
+                "description": "Do you support nature conservation efforts?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 8,
+                "negativeVote": 3
+            },
+            {
+                "id": 2,
+                "title": "Donations",
+                "description": "Would you donate to conservation organizations?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 7,
+                "negativeVote": 4
+            },
+            {
+                "id": 3,
+                "title": "Volunteering",
+                "description": "Would you volunteer for conservation activities?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 6
+            }
+        ]
+    },
+    {
+        "title": "Travel Destinations",
+        "description": "A survey to understand popular travel destinations.",
+        "category": "Traveling",
+        "creationTime": "2024-06-10T10:00:00Z",
+        "deadline": "2024-07-13",
+        "status": "publish",
+        "totalVotes": 30,
+        "totalYesVotes": 21,
+        "totalNoVotes": 9,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Preference",
+                "description": "Do you prefer visiting historical places?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 4
+            },
+            {
+                "id": 2,
+                "title": "Beaches",
+                "description": "Do you prefer beach destinations?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 7,
+                "negativeVote": 3
+            },
+            {
+                "id": 3,
+                "title": "Mountains",
+                "description": "Do you prefer mountain destinations?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 8,
+                "negativeVote": 2
+            }
+        ]
+    },
+    {
+        "title": "AI in Daily Life",
+        "description": "A survey on the impact of AI in daily life.",
+        "category": "Science",
+        "creationTime": "2024-06-11T10:00:00Z",
+        "deadline": "2024-07-22",
+        "status": "publish",
+        "totalVotes": 27,
+        "totalYesVotes": 12,
+        "totalNoVotes": 15,
+        "questions": [
+            {
+                "id": 1,
+                "title": "AI Gadgets",
+                "description": "Do you use AI-powered gadgets?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 4
+            },
+            {
+                "id": 2,
+                "title": "AI Assistants",
+                "description": "Do you use AI assistants like Alexa or Google Assistant?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 4,
+                "negativeVote": 5
+            },
+            {
+                "id": 3,
+                "title": "AI in Services",
+                "description": "Do you think AI improves the quality of services?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 3,
+                "negativeVote": 6
+            }
+        ]
+    },
+    {
+        "title": "Remote Learning",
+        "description": "A survey on the experience with remote learning.",
+        "category": "Education",
+        "creationTime": "2024-06-12T10:00:00Z",
+        "deadline": "2024-07-25",
+        "status": "publish",
+        "totalVotes": 24,
+        "totalYesVotes": 16,
+        "totalNoVotes": 8,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Experience",
+                "description": "Is your remote learning experience positive?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 3,
+                "negativeVote": 5
+            },
+            {
+                "id": 2,
+                "title": "Resources",
+                "description": "Do you have sufficient resources for remote learning?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 2
+            },
+            {
+                "id": 3,
+                "title": "Challenges",
+                "description": "Do you face challenges with remote learning?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 7,
+                "negativeVote": 1
+            }
+        ]
+    },
+    {
+        "title": "Climate Change Impact",
+        "description": "A survey to understand views on climate change.",
+        "category": "Nature",
+        "creationTime": "2024-06-13T10:00:00Z",
+        "deadline": "2024-07-21",
+        "status": "publish",
+        "totalVotes": 24,
+        "totalYesVotes": 14,
+        "totalNoVotes": 10,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Awareness",
+                "description": "Are you aware of climate change impacts?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 3
+            },
+            {
+                "id": 2,
+                "title": "Personal Impact",
+                "description": "Do you feel climate change impacts your life?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 2
+            },
+            {
+                "id": 3,
+                "title": "Action",
+                "description": "Are you taking action to reduce your carbon footprint?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 3,
+                "negativeVote": 5
+            }
+        ]
+    },
+    {
+        "title": "Preferences for Online Courses",
+        "description": "A survey to understand preferences for online courses.",
+        "category": "Education",
+        "creationTime": "2024-06-14T10:00:00Z",
+        "deadline": "2024-07-19",
+        "status": "publish",
+        "totalVotes": 21,
+        "totalYesVotes": 12,
+        "totalNoVotes": 9,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Formats",
+                "description": "Do you prefer video courses over text-based courses?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 1
+            },
+            {
+                "id": 2,
+                "title": "Live Sessions",
+                "description": "Do you prefer live sessions over pre-recorded sessions?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 4,
+                "negativeVote": 3
+            },
+            {
+                "id": 3,
+                "title": "Duration",
+                "description": "Do you prefer short courses over long courses?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 2,
+                "negativeVote": 5
+            }
+        ]
+    },
+    {
+        "title": "Sustainable Tourism",
+        "description": "A survey to understand views on sustainable tourism.",
+        "category": "Traveling",
+        "creationTime": "2024-06-15T10:00:00Z",
+        "deadline": "2024-07-17",
+        "status": "publish",
+        "totalVotes": 30,
+        "totalYesVotes": 17,
+        "totalNoVotes": 13,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Awareness",
+                "description": "Are you aware of sustainable tourism practices?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 4
+            },
+            {
+                "id": 2,
+                "title": "Preference",
+                "description": "Do you prefer staying in eco-friendly accommodations?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 7,
+                "negativeVote": 3
+            },
+            {
+                "id": 3,
+                "title": "Behavior",
+                "description": "Do you practice sustainable tourism while traveling?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 4,
+                "negativeVote": 6
+            }
+        ]
+    },
+    {
+        "title": "Interest in Biotechnology",
+        "description": "A survey to gauge interest in biotechnology.",
+        "category": "Science",
+        "creationTime": "2024-06-16T10:00:00Z",
+        "deadline": "2024-07-14",
+        "status": "publish",
+        "totalVotes": 27,
+        "totalYesVotes": 10,
+        "totalNoVotes": 17,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Biotech News",
+                "description": "Do you follow news about biotechnology?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 3,
+                "negativeVote": 6
+            },
+            {
+                "id": 2,
+                "title": "Research",
+                "description": "Do you think biotechnology research is important?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 2,
+                "negativeVote": 7
+            },
+            {
+                "id": 3,
+                "title": "Education",
+                "description": "Would you like to learn more about biotechnology?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 4
+            }
+        ]
+    },
+    {
+        "title": "Use of Mobile Learning Apps",
+        "description": "A survey on the use of mobile learning apps.",
+        "category": "Education",
+        "creationTime": "2024-06-17T10:00:00Z",
+        "deadline": "2024-07-12",
+        "status": "publish",
+        "totalVotes": 33,
+        "totalYesVotes": 18,
+        "totalNoVotes": 15,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Usage",
+                "description": "Do you use mobile learning apps?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 7,
+                "negativeVote": 4
+            },
+            {
+                "id": 2,
+                "title": "Satisfaction",
+                "description": "Are you satisfied with mobile learning apps?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 6
+            },
+            {
+                "id": 3,
+                "title": "Recommendation",
+                "description": "Would you recommend mobile learning apps to others?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 5
+            }
+        ]
+    },
+    {
+        "title": "Interest in Renewable Energy",
+        "description": "A survey to understand interest in renewable energy.",
+        "category": "Science",
+        "creationTime": "2024-06-18T10:00:00Z",
+        "deadline": "2024-07-20",
+        "status": "publish",
+        "totalVotes": 27,
+        "totalYesVotes": 14,
+        "totalNoVotes": 13,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Awareness",
+                "description": "Are you aware of renewable energy sources?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 4,
+                "negativeVote": 5
+            },
+            {
+                "id": 2,
+                "title": "Support",
+                "description": "Do you support the adoption of renewable energy?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 3,
+                "negativeVote": 6
+            },
+            {
+                "id": 3,
+                "title": "Investment",
+                "description": "Would you invest in renewable energy technologies?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 7,
+                "negativeVote": 2
+            }
+        ]
+    },
+    {
+        "title": "Preferences for Nature Reserves",
+        "description": "A survey to understand preferences for visiting nature reserves.",
+        "category": "Nature",
+        "creationTime": "2024-06-19T10:00:00Z",
+        "deadline": "2024-07-15",
+        "status": "publish",
+        "totalVotes": 24,
+        "totalYesVotes": 15,
+        "totalNoVotes": 9,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Visits",
+                "description": "Do you visit nature reserves often?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 4,
+                "negativeVote": 4
+            },
+            {
+                "id": 2,
+                "title": "Support",
+                "description": "Do you support the conservation of nature reserves?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 5,
+                "negativeVote": 3
+            },
+            {
+                "id": 3,
+                "title": "Donations",
+                "description": "Would you donate to support nature reserves?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 6,
+                "negativeVote": 2
+            }
+        ]
+    },
+    {
+        "title": "Agricultural Technology Adoption",
+        "description": "A survey to understand the adoption of agricultural technologies.",
+        "category": "Agriculture",
+        "creationTime": "2024-06-20T10:00:00Z",
+        "deadline": "2024-07-10",
+        "status": "publish",
+        "totalVotes": 27,
+        "totalYesVotes": 9,
+        "totalNoVotes": 18,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Awareness",
+                "description": "Are you aware of new agricultural technologies?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 3,
+                "negativeVote": 6
+            },
+            {
+                "id": 2,
+                "title": "Usage",
+                "description": "Do you use new agricultural technologies?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 4,
+                "negativeVote": 5
+            },
+            {
+                "id": 3,
+                "title": "Support",
+                "description": "Do you support the adoption of new agricultural technologies?",
+                "positive": "yes",
+                "negative": "no",
+                "positiveVote": 2,
+                "negativeVote": 7
+            }
+        ]
+    }
+]
