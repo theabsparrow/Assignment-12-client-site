@@ -15,8 +15,6 @@ const RecentSurvey = () => {
         setLAstSixCArds(sliceCards)
     }, [cards])
 
-  console.log(lastSixCards)
-
     const subHeading = "In this section we are trying to show the most recent surveys with their categories. We select the recent surveys on the base of creation time of a survey. check the survey and explore to participate";
     return (
         <div className="font-poppins px-[60px] mt-16">

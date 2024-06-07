@@ -10,7 +10,7 @@ import { MdHowToVote } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import { IoIosTime } from 'react-icons/io'
 
-const SurveyCards = ({ category, title, totalVotes, description, creationTime }) => {
+const SurveyCards = ({ category, title, totalVotes, description, creationTime, id }) => {
 
     return (
         <div className='shadow-xl rounded-xl font-poppins border-[1px] border-gray-400 relative px-5'>
@@ -39,7 +39,7 @@ const SurveyCards = ({ category, title, totalVotes, description, creationTime })
                         <h1 className='text-lg font-medium bg-[#CFD7DFCC] rounded-xl px-3 py-1'>{description}</h1>
                     </div>
                     <div className='flex justify-between mt-4'>
-                        <Link className='bg-[#859770] text-black px-3 py-1 text-lg font-medium rounded-xl hover:bg-black hover:text-white duration-500'> Explore More</Link>
+                        <Link to={`/survey/${id}`} className='bg-[#859770] text-black px-3 py-1 text-lg font-medium rounded-xl hover:bg-black hover:text-white duration-500'> Explore More</Link>
 
                     </div>
                 </div>
@@ -55,5 +55,6 @@ SurveyCards.propTypes = {
     totalVotes: PropTypes.number,
     description: PropTypes.string,
     creationTime: PropTypes.string,
+    id: PropTypes.string,
 }
 export default SurveyCards;
