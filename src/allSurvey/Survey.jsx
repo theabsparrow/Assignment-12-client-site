@@ -11,7 +11,7 @@ import { IoIosTime } from 'react-icons/io'
 import { BiSolidCategory } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 
-const Survey = ({ category, description, title, creationTime, deadline, totalNoVotes, totalYesVotes, totalVotes, status }) => {
+const Survey = ({ category, description, title, creationTime, deadline, totalNoVotes, totalYesVotes, totalVotes, status, id }) => {
    
     return (
         <div className='flex items-center justify-center border rounded-xl p-5 font-poppins shadow-xl gap-5'>
@@ -47,7 +47,7 @@ const Survey = ({ category, description, title, creationTime, deadline, totalNoV
 
                 <div className='flex justify-between mt-5 border-b-[2px] border-y-slate-400 border-dashed px-6 pb-4'>
                     <h1 className='bg-[#DED66B69] px-2 py-1 rounded-xl flex items-center gap-1'><BiSolidCategory className='text-2xl'/> Category : <span className='bg-[#C1CA3569] px-1 rounded-2xl'>{category}</span></h1>
-                    <Link className='bg-[#859770] px-3 py-1 rounded-xl text-lg font-medium text-white hover:bg-black hover:text-white duration-500'>View Details</Link>
+                    <Link to={`/survey/${id}`} className='bg-[#859770] px-3 py-1 rounded-xl text-lg font-medium text-white hover:bg-black hover:text-white duration-500'>Explore more</Link>
                 </div>
 
             </div>

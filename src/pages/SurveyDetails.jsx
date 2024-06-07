@@ -12,6 +12,8 @@ import { MdHowToVote } from "react-icons/md";
 import { IoIosTime } from "react-icons/io";
 import { BiSolidCategory } from "react-icons/bi";
 import Question from "../components/question/Question";
+import Modal from "../components/modal/Modal";
+import SurveyForm from "../components/surveyForm/SurveyForm";
 
 
 const SurveyDetails = () => {
@@ -25,6 +27,8 @@ const SurveyDetails = () => {
             return data
         }
     })
+
+
     if (isLoading) {
         return <div className="flex flex-col m-8 rounded shadow-md animate-pulse">
             <div className="h-48 rounded-t dark:bg-gray-300"></div>
@@ -72,8 +76,25 @@ const SurveyDetails = () => {
                     }
                 </div>
                 <div className='mt-4 flex justify-center'>
-                    <button className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>Participate in Surveys</button>
+                    <button onClick={() => document.getElementById('surveyModal').showModal()} className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>Participate in Surveys</button>
                 </div>
+            
+                    <div>
+                        {/* Open the modal using document.getElementById('ID').showModal() method */}
+                        <dialog id="surveyModal" className="modal">
+                            <div className="modal-box">
+                                <div>
+                                    {
+                                    questions.map((singleQuestion, i) => <SurveyForm key={i} singleQuestion={singleQuestion}></SurveyForm>) 
+                                    }
+                                    <form method="dialog">
+                                        <button className="btn">Close</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </dialog>
+                    </div>
+                
             </div>
         </div>
     );
