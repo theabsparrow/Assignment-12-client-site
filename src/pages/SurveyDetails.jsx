@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Agriculture from '../../public/images/Agriculture.png';
@@ -12,13 +12,12 @@ import { MdHowToVote } from "react-icons/md";
 import { IoIosTime } from "react-icons/io";
 import { BiSolidCategory } from "react-icons/bi";
 import Question from "../components/question/Question";
-import Modal from "../components/modal/Modal";
 import SurveyForm from "../components/surveyForm/SurveyForm";
 
 
 const SurveyDetails = () => {
-    const { id } = useParams()
-    const axiosPublic = useAxiosPublic()
+    const { id } = useParams();
+    const axiosPublic = useAxiosPublic();
 
     const { data: survey = {}, isLoading } = useQuery({
         queryKey: ['survey', id],
@@ -42,7 +41,7 @@ const SurveyDetails = () => {
     const { title, description, category, creationTime, deadline, status, totalVotes, totalYesVotes, totalNoVotes, questions } = survey;
     return (
         <div className="font-poppins px-[60px] mt-10">
-            <div className="border rounded-xl w-[40vw] mx-auto shadow-xl py-6 px-6">
+            <div className="border rounded-xl w-[50vw] mx-auto shadow-xl py-6 px-6">
                 <div className='flex justify-center'>
                     {category === "Science" && <img className='w-[20vw] rounded-xl shadow-xl' src={Science} alt="" />}
                     {category === "Education" && <img className='w-[20vw] rounded-xl shadow-xl' src={Education} alt="" />}
@@ -78,23 +77,24 @@ const SurveyDetails = () => {
                 <div className='mt-4 flex justify-center'>
                     <button onClick={() => document.getElementById('surveyModal').showModal()} className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>Participate in Surveys</button>
                 </div>
-            
-                    <div>
-                        {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <dialog id="surveyModal" className="modal">
-                            <div className="modal-box">
+
+                <div>
+                    {/* Open the modal using document.getElementById('ID').showModal() method */}
+                    <dialog id="surveyModal" className="modal">
+                        <div className="modal-box">
+                            <div className="space-y-6">
                                 <div>
-                                    {
-                                    questions.map((singleQuestion, i) => <SurveyForm key={i} singleQuestion={singleQuestion}></SurveyForm>) 
-                                    }
-                                    <form method="dialog">
-                                        <button className="btn">Close</button>
-                                    </form>
+                                   <SurveyForm questions={questions}></SurveyForm>
+                                   
                                 </div>
+                                <form method="dialog">
+                                    <button className="btn">Close</button>
+                                </form>
                             </div>
-                        </dialog>
-                    </div>
-                
+                        </div>
+                    </dialog>
+                </div>
+
             </div>
         </div>
     );

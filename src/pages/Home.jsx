@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import Banner from '../components/banner/Banner'
 import PopularSurvey from '../components/popularSurvey/PopularSurvey';
 import RecentSurvey from '../components/recendSurvey/RecentSurvey';
+import HowItWorks from '../components/howItWorks/HowItWorks';
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <Banner></Banner>
             <PopularSurvey></PopularSurvey>
             <RecentSurvey></RecentSurvey>
+            <HowItWorks></HowItWorks>
         </div>
     );
 };
