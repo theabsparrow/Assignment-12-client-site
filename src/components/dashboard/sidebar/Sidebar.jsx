@@ -9,7 +9,6 @@ import useAuth from '../../../hooks/useAuth'
 import { Link } from 'react-router-dom'
 import { MdHomeWork } from 'react-icons/md'
 import logo from '../../../../public/images/logo.png'
-import { CgProfile } from 'react-icons/cg'
 import Swal from 'sweetalert2'
 
 const Sidebar = () => {

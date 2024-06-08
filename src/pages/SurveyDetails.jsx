@@ -115,7 +115,7 @@ const SurveyDetails = () => {
 
                                 </div>
                                 <form method="dialog">
-                                    <button className="btn">Close</button>
+                                    <button className="bg-black px-3 py-2 rounded-xl text-white hover:bg-red-600 duration-500">Close</button>
                                 </form>
                             </div>
                         </div>
