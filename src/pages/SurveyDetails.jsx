@@ -1,4 +1,4 @@
-import {useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Agriculture from '../../public/images/Agriculture.png';
@@ -13,11 +13,16 @@ import { IoIosTime } from "react-icons/io";
 import { BiSolidCategory } from "react-icons/bi";
 import Question from "../components/question/Question";
 import SurveyForm from "../components/surveyForm/SurveyForm";
+import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const SurveyDetails = () => {
     const { id } = useParams();
     const axiosPublic = useAxiosPublic();
+    const { user } = useAuth();
+    const navigate = useNavigate();
+   
 
     const { data: survey = {}, isLoading } = useQuery({
         queryKey: ['survey', id],
@@ -26,6 +31,22 @@ const SurveyDetails = () => {
             return data
         }
     })
+
+    const handleLoginAlert = () => {
+        Swal.fire({
+            title: "Opps",
+            text: "You need to login first to participate in surveys!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Login"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                navigate('/login')
+            }
+        });
+    }
 
 
     if (isLoading) {
@@ -74,9 +95,15 @@ const SurveyDetails = () => {
                         questions.map((question, i) => <Question key={i} question={question} index={i}></Question>)
                     }
                 </div>
-                <div className='mt-4 flex justify-center'>
-                    <button onClick={() => document.getElementById('surveyModal').showModal()} className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>Participate in Surveys</button>
-                </div>
+
+                {
+                    user ? <div className='mt-4 flex justify-center'>
+                        <button onClick={() => document.getElementById('surveyModal').showModal()} className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>Participate in Surveys</button>
+                    </div> : <div className='mt-4 flex justify-center'>
+                        <button onClick={handleLoginAlert} className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>Participate in Surveys</button>
+                    </div>
+                }
+
 
                 <div>
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
@@ -84,8 +111,8 @@ const SurveyDetails = () => {
                         <div className="modal-box">
                             <div className="space-y-6">
                                 <div>
-                                   <SurveyForm questions={questions}></SurveyForm>
-                                   
+                                    <SurveyForm questions={questions}></SurveyForm>
+
                                 </div>
                                 <form method="dialog">
                                     <button className="btn">Close</button>

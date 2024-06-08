@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import Swal from "sweetalert2";
@@ -13,7 +13,8 @@ const Login = () => {
     const { userLogin, setUser, setLoading, loading, user, loginWithGoogle } = useAuth()
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const [displayPass, setDisplayPass] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         if (user) {
@@ -34,7 +35,7 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-            navigate('/')
+            navigate(location?.state? location.state: '/')
 
         }
         catch (error) {

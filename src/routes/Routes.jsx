@@ -7,10 +7,12 @@ import SignUp from "../pages/SignUp";
 import Profile from "../pages/Profile";
 import AllSurveys from "../pages/AllSurveys";
 import SurveyDetails from "../pages/SurveyDetails";
+import DashboardLayout from "../layout/DashboardLayout";
+import PrivateRout from "./PrivateRout";
 
 export const router = createBrowserRouter([
     {
-        path:'/',
+        path: '/',
         element: <Layout></Layout>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
@@ -20,7 +22,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/profile',
-                element: <Profile></Profile>
+                element: <PrivateRout><Profile></Profile></PrivateRout>
             },
             {
                 path: '/allsurveys',
@@ -39,5 +41,9 @@ export const router = createBrowserRouter([
     {
         path: '/signup',
         element: <SignUp></SignUp>
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRout><DashboardLayout></DashboardLayout></PrivateRout>
     }
 ])
