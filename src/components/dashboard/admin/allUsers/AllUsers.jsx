@@ -1,8 +1,29 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 
 const AllUsers = () => {
+    const axiosSecure = useAxiosSecure();
+
+    const { data: users = [], isLoading, refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const { data } = await axiosSecure('/users');
+            return data
+        }
+    })
+    if (isLoading) {
+        return <div className="min-h-screen flex items-center justify-center">
+            <span className="loading loading-bars loading-xs"></span>
+            <span className="loading loading-bars loading-sm"></span>
+            <span className="loading loading-bars loading-md"></span>
+            <span className="loading loading-bars loading-lg"></span>
+        </div>
+    }
+
     return (
-        <div className="flex justify-center w-[calc(100vw-270px)]">
+
+        <div className="flex justify-center w-[calc(100vw-275px)] font-poppins">
 
             <section className="container mx-auto w-full">
                 <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
@@ -31,41 +52,46 @@ const AllUsers = () => {
                         </thead>
 
                         <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                            <tr>
+                        {
+                            users.map((user, index) => (
+                                <tr key={user._id}>
                                 <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                     <div>
-                                        <h2 className="font-medium text-gray-800 dark:text-white ">No. 1</h2>
+                                        <h2 className="font-medium text-gray-800 dark:text-white "><span>No.</span> {index+1}</h2>
                                     </div>
                                 </td>
 
                                 <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
                                     <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
-                                        Bashar
+                                        {user.name}
                                     </div>
                                 </td>
 
                                 <td className="px-4 py-4 text-sm whitespace-nowrap">
                                     <div>
-                                        <h4 className="text-gray-700 dark:text-gray-200">bashar@gmnail.com</h4>
+                                        <h4 className="text-gray-700 dark:text-gray-200 bg-[#4E31B069] inline px-3 py-1 font-normal rounded-full">{user.email}</h4>
                                     </div>
                                 </td>
 
                                 <td className="px-4 py-4 text-sm whitespace-nowrap">
                                     <div className="flex items-center">
-                                        <h1 className="text-white">photo</h1>
+                                        <img className="w-[4vw] rounded-full" src={user.photo} alt="" />
                                     </div>
                                 </td>
 
-                                <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div className=" overflow-hidden rounded-full">
-                                        <h1 className="text-white">guest</h1>
+                                <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
+                                    <div className=" overflow-hidden">
+                                        <h1 className={` text-gray-700 dark:text-gray-200 inline px-3 py-1 rounded-full ${user.role === "Admin" && 'bg-[#DB491769]'} ${user.role === "Surveyor" && 'bg-[#5DF5F569]'} ${user.role === "Guest" && 'bg-[#EB30C969]'} ${user.role === "Pro user" && 'bg-[#347E4C69]'}`}>{user.role}</h1>
                                     </div>
                                 </td>
 
-                                <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                    <h1 className="text-white">Active</h1>
+                                <td className='px-4 py-4 text-sm whitespace-nowrap '>
+                                    <h1 className="text-white">{user.status}</h1>
                                 </td>
                             </tr>
+                            ))
+                        }
+                            
                         </tbody>
 
                     </table>
