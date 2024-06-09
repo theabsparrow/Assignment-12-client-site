@@ -47,7 +47,7 @@ const Navbar = () => {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "invalid email or password",
+                text: "logout failed",
                 footer: '<a href="#">Why do I have this issue?</a>'
             });
         }

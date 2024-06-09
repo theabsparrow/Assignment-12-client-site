@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { IoEye, IoEyeOff } from "react-icons/io5";
@@ -8,9 +7,10 @@ import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { Helmet } from "react-helmet";
+import SocialLogin from "../components/socialLogin/SocialLogin";
 
 const Login = () => {
-    const { userLogin, setUser, setLoading, loading, user, loginWithGoogle } = useAuth()
+    const { userLogin, setUser, setLoading, loading, user } = useAuth()
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const [displayPass, setDisplayPass] = useState(false);
     const navigate = useNavigate();
@@ -37,30 +37,6 @@ const Login = () => {
             });
             navigate(location?.state? location.state: '/')
 
-        }
-        catch (error) {
-            setLoading(false)
-            console.log(error)
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "invalid email or password",
-                footer: '<a href="#">Why do I have this issue?</a>'
-            });
-        }
-    }
-
-    const handleGoogleLogin = async () => {
-        try {
-            await loginWithGoogle()
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Successfully login with google",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            navigate('/')
         }
         catch (error) {
             setLoading(false)
@@ -129,7 +105,7 @@ const Login = () => {
                         disabled={loading}
                         className="btn bg-[#859770] hover:bg-[#35DC75] text-lg"
                         type="submit">
-                        {loading ? <TbFidgetSpinner className="animate-spin m-auto"></TbFidgetSpinner> : "Sign Up"}
+                        {loading ? <TbFidgetSpinner className="animate-spin m-auto"></TbFidgetSpinner> : "Login"}
                     </button>
                 </div>
             </form>
@@ -138,20 +114,12 @@ const Login = () => {
                 <div>
                     <div className="divider">Social Login</div>
                 </div>
-
-                <div className="space-x-4 mx-auto shadow-xl rounded-xl px-8 py-1 border-[1px] border-[#35DC75] flex justify-center items-center ">
-                    <button
-                        disabled={loading}
-                        onClick={handleGoogleLogin}
-                    ><FcGoogle
-                        className="disabled:cursor-not-allowed cursor-pointer text-3xl shadow-xl rounded-full hover:scale-110 duration-300">
-                        </FcGoogle>
-                    </button>
-                    <button><FaGithub className="text-3xl shadow-xl rounded-full hover:scale-110 duration-300"></FaGithub></button>
+                <div>
+                    <SocialLogin></SocialLogin>
                 </div>
 
                 <div className="text-center">
-                    <p>New to this site? Please <Link to='/signup' className="text-[#289521] text-xl font-medium ">Sign up</Link></p>
+                    <p>New to this site? Please <Link to='/signup' className="text-[#289521] text-xl font-medium ">Sign Up</Link></p>
                     <p>Or</p>
                 </div>
                 <div className="text-center">

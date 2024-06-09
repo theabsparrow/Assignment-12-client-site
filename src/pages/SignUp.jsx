@@ -1,5 +1,4 @@
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react";
@@ -10,6 +9,8 @@ import useAuth from "../hooks/useAuth";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { Helmet } from "react-helmet";
+import SocialLogin from "../components/socialLogin/SocialLogin";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 
@@ -22,11 +23,12 @@ const SignUp = () => {
     const [errorPass, setErrorPass] = useState('');
     const [displayPass, setDisplayPass] = useState(false);
     const [displayConfirmPass, setDisplayConfirmPass] = useState(false);
-    const { createUser, setUser, updateUserProfile, setLoading, loading, user, loginWithGoogle } = useAuth()
+    const { createUser, setUser, updateUserProfile, setLoading, loading, user, } = useAuth()
     const navigate = useNavigate()
     const [Captcha, setCaptcha] = useState('')
     const [errorCaptcha, setErrorCaptcha] = useState('')
     const [disable, setDisable] = useState(true)
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         loadCaptchaEnginge(6)
@@ -86,7 +88,18 @@ const SignUp = () => {
                 timer: 1500
             });
             navigate('/')
+
+            const userInfo = {
+                email: result.user.email,
+                name: result.user.displayName,
+                role: "guest",
+                timestamp: Date.now()
+            }
+            const { data:userData } = await axiosPublic.post('/user', userInfo);
+            console.log(userData);
+            
         }
+
         catch (error) {
             console.log(error)
             setLoading(false)
@@ -98,37 +111,9 @@ const SignUp = () => {
             });
         }
     }
-
-    // google login
-    const handleGoogleLogin = async () => {
-        try {
-            await loginWithGoogle()
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Successfully login with google",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            navigate('/')
-        }
-        catch (error) {
-
-            console.log(error)
-            setLoading(false)
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: { error },
-                footer: '<a href="#">Why do I have this issue?</a>'
-            });
-        }
-    }
-
-
 
     useEffect(() => {
-        if (user) {
+        if (user ) {
             navigate('/')
         }
     }, [navigate, user])
@@ -268,16 +253,8 @@ const SignUp = () => {
                 <div>
                     <div className="divider divider-success text-[#35DC75]">Social Login</div>
                 </div>
-
-                <div className="space-x-4 mx-auto shadow-xl rounded-xl px-8 py-1 border-[1px] border-[#35DC75] flex justify-center items-center ">
-                    <button
-                        disabled={loading}
-                        onClick={handleGoogleLogin}
-                    ><FcGoogle
-                        className="disabled:cursor-not-allowed cursor-pointer text-3xl shadow-xl rounded-full hover:scale-110 duration-300">
-                        </FcGoogle>
-                    </button>
-                    <button><FaGithub className="text-3xl shadow-xl rounded-full hover:scale-110 duration-300"></FaGithub></button>
+                <div>
+                    <SocialLogin></SocialLogin>
                 </div>
 
                 <div className="text-center mt-2">

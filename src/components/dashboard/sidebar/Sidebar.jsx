@@ -1,20 +1,26 @@
 import { useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
-import { BsFillHouseAddFill, BsFingerprint } from 'react-icons/bs'
-import { GrUserAdmin } from 'react-icons/gr'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
 import { NavLink, useNavigate } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import { Link } from 'react-router-dom'
-import { MdHomeWork } from 'react-icons/md'
+import { MdDoneAll, MdOutlineCreateNewFolder, MdPayment, MdReportProblem } from 'react-icons/md'
 import logo from '../../../../public/images/logo.png'
 import Swal from 'sweetalert2'
+import { CgProfile } from 'react-icons/cg'
+import { IoCreateSharp } from 'react-icons/io5'
+import { CiFaceFrown } from 'react-icons/ci'
+import { FaCommentDots } from 'react-icons/fa'
+import useRole from '../../../hooks/useRole'
+import MenuItem from './menuItem/MenuItem'
 
 const Sidebar = () => {
     const { logout, user } = useAuth()
     const [isActive, setActive] = useState(false)
-const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [role] = useRole();
+   
 
     // Sidebar Responsive Handler
     const handleToggle = () => {
@@ -38,7 +44,7 @@ const navigate = useNavigate()
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "invalid email or password",
+                text: "logout failed",
                 footer: '<a href="#">Why do I have this issue?</a>'
             });
         }
@@ -46,17 +52,18 @@ const navigate = useNavigate()
     return (
         <>
             {/* Small Screen Navbar */}
-            <div className='bg-[#859770] text-gray-800 flex justify-between md:hidden'>
+            <div className='bg-[#859770] text-[#35DC75CC] flex justify-between md:hidden'>
                 <div>
                     <div className='block cursor-pointer p-4 font-bold'>
-                        <Link to='/'>
+                        <Link className='flex items-center gap-2' to='/'>
                             <img
-                                // className='hidden md:block'
-                                src='https://i.ibb.co/4ZXzmq5/logo.png'
+                                className='w-[10vw]'
+                                src={logo}
                                 alt='logo'
                                 width='100'
                                 height='100'
                             />
+                            <h1 className='text-2xl font-bold text-[#35DC75CC]'>SurveyAtlas</h1>
                         </Link>
                     </div>
                 </div>
@@ -78,7 +85,7 @@ const navigate = useNavigate()
                     <div>
                         <div className='w-full hidden md:flex px-4 py-1 shadow-lg rounded-lg justify-center items-center bg-[#859770] mx-auto'>
                             <Link to='/' className='flex items-center'>
-                                <img className='lg:w-[3vw]' src={logo} alt="logo" />
+                                <img className='md:w-[5vw] lg:w-[3vw]' src={logo} alt="logo" />
                                 <h1 className='text-2xl font-bold text-[#35DC75CC]'>SurveyAtlas</h1>
                             </Link>
                         </div>
@@ -90,62 +97,41 @@ const navigate = useNavigate()
 
                         {/*  Menu Items */}
                         <nav>
-                            {/* Statistics */}
-                            <NavLink
-                                to='statistics'
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <BsGraphUp className='w-5 h-5' />
 
-                                <span className='mx-4 font-medium'>Statistics</span>
-                            </NavLink>
+                            {/* common routes start */}
+                            <MenuItem label={"Statistic"} address={'/dashboard'} icon={BsGraphUp}></MenuItem>
+                            <MenuItem label={"Total Survey"} address={'totalSurveys'} icon={MdDoneAll}></MenuItem>
+                            {/* common routes end */}
 
-                            {/* Add Room */}
-                            <NavLink
-                                to='add-room'
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <BsFillHouseAddFill className='w-5 h-5' />
+                            {/* admin rout starts */}
+                            <MenuItem label={"All Payemnts"} address={'allPayments'} icon={MdPayment}></MenuItem>
+                            <MenuItem label={"All Users"} address={'allUser'} icon={CgProfile}></MenuItem>
+                            {/* admin routes end */}
 
-                                <span className='mx-4 font-medium'>Add Room</span>
-                            </NavLink>
-                            {/* My Listing */}
-                            <NavLink
-                                to='my-listings'
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <MdHomeWork className='w-5 h-5' />
 
-                                <span className='mx-4 font-medium'>My Listings</span>
-                            </NavLink>
+                            {/* surveyour rout starts */}
+                            <MenuItem label={"Create Survey"} address={'creatSurvey'} icon={MdOutlineCreateNewFolder}></MenuItem>
+                            <MenuItem label={"Update Survey"} address={'updateSurvey'} icon={IoCreateSharp}></MenuItem>
+                            {/* surveyor routes end */}
+
+
+                            {/* user routes starts */}
+                            <MenuItem label={"My Surveys"} address={'mySurveys'} icon={CiFaceFrown}></MenuItem>
+                            <MenuItem label={"Report Surveys"} address={'report'} icon={MdReportProblem}></MenuItem>
+                            {/* user routes ends */}
+
+                            {/* Pro user routes starts */}
+                            <MenuItem label={"My Comments"} address={'myComment'} icon={FaCommentDots}></MenuItem>
+                            {/* pro user routes ends */}
+
                         </nav>
                     </div>
                 </div>
 
                 <div>
                     <hr />
-
-
-                    <NavLink
-                        to='/profile'
-                        className={({ isActive }) =>
-                            `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                            }`
-                        }
-                    >
-                        <span><img className='w-[3vw] rounded-full' src={user?.photoURL} alt="" /></span>
-
-                        <span className='mx-4 font-medium'>Profile</span>
-                    </NavLink>
+                    {/* profile menu */}
+                    <MenuItem label={"Profile"} address={'/profile'} icon={FaCommentDots} image={user?.photoURL}></MenuItem>
 
                     <button
                         onClick={handleLogOut}

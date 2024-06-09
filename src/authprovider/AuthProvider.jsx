@@ -8,7 +8,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 export const AuthContext = createContext(null)
 const googleProvider = new GoogleAuthProvider();
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const axiosPublic = useAxiosPublic()
@@ -21,7 +21,7 @@ const AuthProvider = ({children}) => {
 
     // update profile
     const updateUserProfile = (name, photo) => {
-        
+
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo
@@ -35,7 +35,7 @@ const AuthProvider = ({children}) => {
     }
 
     // google login
-     const loginWithGoogle = () => {
+    const loginWithGoogle = () => {
         setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
@@ -48,26 +48,27 @@ const AuthProvider = ({children}) => {
 
     // user state change
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+        const unsubscribe = onAuthStateChanged(auth, async currentUser => {
             setUser(currentUser)
-            if(currentUser){
-                const userInfo = {email: currentUser.email};
+
+            if (currentUser) {
+                const userInfo = { email: currentUser.email };
                 axiosPublic.post('/jwt', userInfo)
-                .then (res => {
-                    if(res.data.token) {
-                        localStorage.setItem('access-token', res.data.token)
-                    }
-                })
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token)
+                        }
+                    })
             }
             else {
-               localStorage.removeItem('access-token')
+                localStorage.removeItem('access-token')
             }
             setLoading(false)
         });
         return () => {
             return unsubscribe()
         }
-    },[axiosPublic])
+    }, [axiosPublic])
 
     const contextInfo = {
         createUser,
