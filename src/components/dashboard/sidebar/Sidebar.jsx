@@ -14,13 +14,18 @@ import { CiFaceFrown } from 'react-icons/ci'
 import { FaCommentDots } from 'react-icons/fa'
 import useRole from '../../../hooks/useRole'
 import MenuItem from './menuItem/MenuItem'
+import AdminMenu from './menuItem/AdminMenu'
+import SurveyorMenu from './menuItem/SurveyorMenu'
+import UserMenu from './menuItem/UserMenu'
+import ProUserMenu from './menuItem/ProUserMenu'
+import SharedMenu from './menuItem/SharedMenu'
 
 const Sidebar = () => {
     const { logout, user } = useAuth()
     const [isActive, setActive] = useState(false)
     const navigate = useNavigate();
     const [role] = useRole();
-   
+
 
     // Sidebar Responsive Handler
     const handleToggle = () => {
@@ -97,32 +102,13 @@ const Sidebar = () => {
 
                         {/*  Menu Items */}
                         <nav>
-
-                            {/* common routes start */}
                             <MenuItem label={"Statistic"} address={'/dashboard'} icon={BsGraphUp}></MenuItem>
-                            <MenuItem label={"Total Survey"} address={'totalSurveys'} icon={MdDoneAll}></MenuItem>
-                            {/* common routes end */}
 
-                            {/* admin rout starts */}
-                            <MenuItem label={"All Payemnts"} address={'allPayments'} icon={MdPayment}></MenuItem>
-                            <MenuItem label={"All Users"} address={'allUser'} icon={CgProfile}></MenuItem>
-                            {/* admin routes end */}
-
-
-                            {/* surveyour rout starts */}
-                            <MenuItem label={"Create Survey"} address={'creatSurvey'} icon={MdOutlineCreateNewFolder}></MenuItem>
-                            <MenuItem label={"Update Survey"} address={'updateSurvey'} icon={IoCreateSharp}></MenuItem>
-                            {/* surveyor routes end */}
-
-
-                            {/* user routes starts */}
-                            <MenuItem label={"My Surveys"} address={'mySurveys'} icon={CiFaceFrown}></MenuItem>
-                            <MenuItem label={"Report Surveys"} address={'report'} icon={MdReportProblem}></MenuItem>
-                            {/* user routes ends */}
-
-                            {/* Pro user routes starts */}
-                            <MenuItem label={"My Comments"} address={'myComment'} icon={FaCommentDots}></MenuItem>
-                            {/* pro user routes ends */}
+                            {role === 'Admin' && <AdminMenu></AdminMenu>}
+                            {role === 'Surveyor' && <SurveyorMenu></SurveyorMenu>}
+                            {role === 'Guest' && <UserMenu></UserMenu>}
+                            {role === 'Pro User' && <ProUserMenu></ProUserMenu>}
+                            {(role === 'Surveyor' || role === 'Admin') && <SharedMenu></SharedMenu>}
 
                         </nav>
                     </div>
@@ -131,14 +117,12 @@ const Sidebar = () => {
                 <div>
                     <hr />
                     {/* profile menu */}
-                    <MenuItem label={"Profile"} address={'/profile'} icon={FaCommentDots} image={user?.photoURL}></MenuItem>
+                    <MenuItem label={"Profile"} address={'/profile'} icon={CgProfile} image={user?.photoURL}></MenuItem>
 
                     <button
                         onClick={handleLogOut}
-                        className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
-                    >
+                        className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'>
                         <GrLogout className='w-5 h-5' />
-
                         <span className='mx-4 font-medium'>Logout</span>
                     </button>
                 </div>

@@ -18,6 +18,9 @@ import MySurveys from "../components/dashboard/user/mySurveys/MySurveys";
 import Report from "../components/dashboard/user/report/Report";
 import MyComments from "../components/dashboard/proUser/myComments/MyComments";
 import TotalSurveys from "../components/dashboard/common/totalSurveys/TotalSurveys";
+import AdminRoute from "./AdminRoute";
+import SurveyorRoute from "./SurveyorRoute";
+import SharedRoute from "./SharedRoute";
 
 export const router = createBrowserRouter([
     {
@@ -58,52 +61,104 @@ export const router = createBrowserRouter([
             // common rout
             {
                 index: true,
-                element: <Statistic></Statistic>
+                element: <PrivateRout><Statistic></Statistic></PrivateRout>,
             },
+
+
             // common rout for admin and surveyor only
             {
                 path: 'totalSurveys',
-                element: <TotalSurveys></TotalSurveys>
+                element: (
+                    <PrivateRout>
+                        <SharedRoute>
+                            <TotalSurveys>
+
+                            </TotalSurveys>
+                        </SharedRoute>
+                    </PrivateRout>),
             },
 
 
             // admin access rout
             {
                 path: 'allPayments',
-                element: <AllPayments></AllPayments>,
+                element: (
+                    <PrivateRout>
+                        <AdminRoute>
+                            <AllPayments>
+
+                            </AllPayments>
+                        </AdminRoute>
+                    </PrivateRout>),
             },
             {
                 path: 'allUser',
-                element: <AllUsers></AllUsers>
+                element: (
+                    <PrivateRout>
+                        <AdminRoute>
+                            <AllUsers>
+
+                            </AllUsers>
+                        </AdminRoute>
+                    </PrivateRout>),
             },
 
 
             // surveyor access rout
             {
                 path: 'creatSurvey',
-                element: <CreatSurvey></CreatSurvey>,
+                element: (
+                    <PrivateRout>
+                        <SurveyorRoute>
+                            <CreatSurvey>
+
+                            </CreatSurvey>
+                        </SurveyorRoute>
+                    </PrivateRout>),
             },
             {
                 path: 'updateSurvey',
-                element: <UpdateSurvey></UpdateSurvey>,
+                element: (
+                    <PrivateRout>
+                        <SurveyorRoute>
+                            <UpdateSurvey>
+
+                            </UpdateSurvey>
+                        </SurveyorRoute>
+                    </PrivateRout>),
             },
 
 
             // user access rout
             {
                 path: 'mySurveys',
-                element: <MySurveys></MySurveys>,
+                element: (
+                    <PrivateRout>
+                        <MySurveys>
+
+                        </MySurveys>
+                    </PrivateRout>),
             },
             {
                 path: 'report',
-                element: <Report></Report>,
+                element: (
+                    <PrivateRout>
+                        <Report>
+
+                        </Report>
+                    </PrivateRout>),
             },
 
-            
+
             // pro-user access rout
             {
                 path: 'myComment',
-                element: <MyComments></MyComments>
+                element: (
+                    <PrivateRout>
+                        <MyComments>
+
+                        </MyComments>
+                    </PrivateRout>)
             }
         ]
     }

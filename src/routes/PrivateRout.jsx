@@ -7,19 +7,15 @@ import PropTypes from 'prop-types';
 
 
 const PrivateRout = ({ children }) => {
-    const { user, loader } = useAuth()
+    const { user, loading } = useAuth()
     const location = useLocation()
 
-    if (loader) {
-        return <div className="flex justify-center mt-4 mb-4 min-h-[calc(100vh-466px)]">
-            <div className="flex flex-col m-8 rounded shadow-md animate-pulse">
-                <div className="h-48 rounded-t dark:bg-gray-300"></div>
-                <div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-50">
-                    <div className="w-full h-6 rounded dark:bg-gray-300"></div>
-                    <div className="w-full h-6 rounded dark:bg-gray-300"></div>
-                    <div className="w-3/4 h-6 rounded dark:bg-gray-300"></div>
-                </div>
-            </div>
+    if (loading) {
+        return <div className="min-h-screen flex items-center justify-center">
+            <span className="loading loading-bars loading-xs"></span>
+            <span className="loading loading-bars loading-sm"></span>
+            <span className="loading loading-bars loading-md"></span>
+            <span className="loading loading-bars loading-lg"></span>
         </div>
     }
 

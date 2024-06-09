@@ -1,10 +1,24 @@
 import { Helmet } from "react-helmet";
 import useAuth from "../hooks/useAuth";
 import cover from '../../public/images/Cover.png';
+import useRole from "../hooks/useRole";
 
 
 const Profile = () => {
-    const {user} = useAuth();
+    const { user } = useAuth();
+    const [role] = useRole();
+
+   
+   
+
+    // if (loading || isLoading) {
+    //     return <div>
+    //         <span className="loading loading-bars loading-xs"></span>
+    //         <span className="loading loading-bars loading-sm"></span>
+    //         <span className="loading loading-bars loading-md"></span>
+    //         <span className="loading loading-bars loading-lg"></span>
+    //     </div>
+    // }
     return (
         <div className="font-poppins mt-10">
             <Helmet>
@@ -30,7 +44,7 @@ const Profile = () => {
                         </a>
 
                         <p className='p-2 px-4 text-xs text-white bg-[#859770] rounded-full'>
-                            Admin
+                            {role}
                         </p>
                         <p className='mt-2 text-xl font-medium text-gray-800 '>
                             User Id: {user.uid}
