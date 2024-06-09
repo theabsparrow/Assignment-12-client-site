@@ -27,7 +27,9 @@ const SocialLogin = () => {
                 email: result.user?.email,
                 name: result.user?.displayName,
                 role: "Guest",
-                timestamp: Date.now()
+                timestamp: Date.now(),
+                photo: result.user?.photoURL,
+                status: "Active"
             }
             const { data } = await axiosPublic.post('/user', userInfo);
             console.log(data);
