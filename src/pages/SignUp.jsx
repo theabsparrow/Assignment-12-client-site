@@ -126,7 +126,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="card-body w-[35vw] mx-auto shadow-xl mt-5 border rounded-xl font-poppins">
+        <div className="card-body lg:w-[35vw] mx-auto shadow-xl mt-5 border rounded-xl font-poppins">
             <Helmet>
                 <title>Sign Up || surveyAtlas</title>
             </Helmet>

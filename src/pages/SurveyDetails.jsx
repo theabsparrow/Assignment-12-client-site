@@ -61,17 +61,17 @@ const SurveyDetails = () => {
     }
     const { title, description, category, creationTime, deadline, status, totalVotes, totalYesVotes, totalNoVotes, questions } = survey;
     return (
-        <div className="font-poppins px-[60px] mt-10">
-            <div className="border rounded-xl w-[50vw] mx-auto shadow-xl py-6 px-6">
+        <div className="font-poppins px-2 lg:px-[60px] mt-10">
+            <div className="border rounded-xl w-full lg:w-[50vw] mx-auto shadow-xl py-6 px-6">
                 <div className='flex justify-center'>
-                    {category === "Science" && <img className='w-[20vw] rounded-xl shadow-xl' src={Science} alt="" />}
-                    {category === "Education" && <img className='w-[20vw] rounded-xl shadow-xl' src={Education} alt="" />}
-                    {category === "Agriculture" && <img className='w-[20vw] rounded-xl shadow-xl' src={Agriculture} alt="" />}
-                    {category === "Nature" && <img className='w-[20vw] rounded-xl shadow-xl' src={Nature} alt="" />}
-                    {category === "Traveling" && <img className='w-[20vw] rounded-xl shadow-xl' src={Travelling} alt="" />}
+                    {category === "Science" && <img className='lg:w-[20vw] rounded-xl shadow-xl' src={Science} alt="" />}
+                    {category === "Education" && <img className='lg:w-[20vw] rounded-xl shadow-xl' src={Education} alt="" />}
+                    {category === "Agriculture" && <img className='lg:w-[20vw] rounded-xl shadow-xl' src={Agriculture} alt="" />}
+                    {category === "Nature" && <img className='lg:w-[20vw] rounded-xl shadow-xl' src={Nature} alt="" />}
+                    {category === "Traveling" && <img className='lg:w-[20vw] rounded-xl shadow-xl' src={Travelling} alt="" />}
                 </div>
                 <div className="mt-6 flex flex-col items-center space-y-2 border-b-[2px] border-y-slate-400 border-dashed pb-4">
-                    <h1 className="text-4xl font-bold">{title}</h1>
+                    <h1 className="text-4xl font-bold text-center">{title}</h1>
                     <p className="text-lg font-medium">{description}</p>
                 </div>
                 <div className='flex justify-between mt-5 border-b-[2px] border-y-slate-400 border-dashed px-6 pb-4'>

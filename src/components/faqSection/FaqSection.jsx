@@ -5,18 +5,18 @@ const FaqSection = () => {
     const heading = "Features and Questions";
     const subHeading = "Ask us freequently. Make question about our features and works. Here we picked some popular question asked by public. we tried to answer them in a very easy way"
     return (
-        <div className="font-poppins px-[60px] mt-16">
+        <div className="font-poppins px-2 lg:px-[60px] mt-16">
             <Heading heading={heading} subHeading={subHeading}></Heading>
 
-            <div className="flex items-center justify-center mt-6">
+            <div className="flex flex-col lg:flex-row items-center justify-center mt-6">
 
-                <div className="w-[50%] ">
+                <div className="lg:w-[50%] ">
                     <div className='shadow-xl border rounded-xl flex justify-center'>
                         <img src={faq} alt="" />
                     </div>
                 </div>
 
-                <div className="space-y-2 w-[50%]">
+                <div className="space-y-2 lg:w-[50%]">
 
                     <div className="collapse collapse-arrow bg-base-200">
                         <input type="radio" name="my-accordion-2" defaultChecked />

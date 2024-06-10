@@ -17,9 +17,9 @@ const RecentSurvey = () => {
 
     const subHeading = "In this section we are trying to show the most recent surveys with their categories. We select the recent surveys on the base of creation time of a survey. check the survey and explore to participate";
     return (
-        <div className="font-poppins px-[60px] mt-16">
+        <div className="font-poppins px-2 lg:px-[60px] mt-16">
             <Heading heading={"Most Recent Surveys"} subHeading={subHeading}></Heading>
-            <div className="grid grid-cols-3 mx-auto border justify-center gap-4 mt-5">
+            <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto border justify-center gap-4 mt-5">
                 {
                     lastSixCards.map(lastSixCard => <Recent key={lastSixCard._id} lastSixCard={lastSixCard}></Recent>)
                 }

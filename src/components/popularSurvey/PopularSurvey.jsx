@@ -16,9 +16,9 @@ const PopularSurvey = () => {
 const subHeading = "In this section we are trying to show the most popular surveys with their categories. We select the popular surveys on the base of total votes of a survey. check the survey and explore to participate";
 
     return (
-        <div className="font-poppins px-[60px] mt-16">
+        <div className="font-poppins px-2 lg:px-[60px] mt-16">
             <Heading heading={"Most Popular Surveys"} subHeading={subHeading}></Heading>
-            <div className="grid grid-cols-3 mx-auto border justify-center gap-4 mt-5">
+            <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto border justify-center space-y-5 gap-4 mt-5">
                 {
                     sixCards.map(sixCard => <Popular key={sixCard._id} sixCard={sixCard}></Popular>)
                 }

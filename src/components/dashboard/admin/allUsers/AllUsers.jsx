@@ -97,7 +97,6 @@ const AllUsers = () => {
                     </table>
                 </div>
             </section>
-
         </div>
     );
 };

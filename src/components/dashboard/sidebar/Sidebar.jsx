@@ -2,16 +2,11 @@ import { useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
-import { NavLink, useNavigate } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
-import { Link } from 'react-router-dom'
-import { MdDoneAll, MdOutlineCreateNewFolder, MdPayment, MdReportProblem } from 'react-icons/md'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../../../public/images/logo.png'
 import Swal from 'sweetalert2'
 import { CgProfile } from 'react-icons/cg'
-import { IoCreateSharp } from 'react-icons/io5'
-import { CiFaceFrown } from 'react-icons/ci'
-import { FaCommentDots } from 'react-icons/fa'
 import useRole from '../../../hooks/useRole'
 import MenuItem from './menuItem/MenuItem'
 import AdminMenu from './menuItem/AdminMenu'
@@ -106,7 +101,7 @@ const Sidebar = () => {
                             {role === 'Guest' && <UserMenu></UserMenu>}
                             {role === 'Pro User' && <ProUserMenu></ProUserMenu>}
                             {(role === 'Surveyor' || role === 'Admin') && <SharedMenu></SharedMenu>}
-
+                            
                         </nav>
                     </div>
                 </div>
@@ -126,7 +121,7 @@ const Sidebar = () => {
 
             {/* large device */}
             <div
-                className='bg-[#859770] w-64 space-y-6 px-2 py-4 min-h-screen flex flex-col justify-between'>
+                className='bg-[#859770] w-64 space-y-6 px-2 py-4 min-h-screen flex flex-col justify-between sticky top-0'>
 
                 {/* first part */}
                 <div>
@@ -147,6 +142,8 @@ const Sidebar = () => {
                             {role === 'Guest' && <UserMenu></UserMenu>}
                             {role === 'Pro User' && <ProUserMenu></ProUserMenu>}
                             {(role === 'Surveyor' || role === 'Admin') && <SharedMenu></SharedMenu>}
+
+                            
 
                         </nav>
                     </div>

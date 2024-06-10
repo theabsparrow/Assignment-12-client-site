@@ -27,17 +27,17 @@ const HowItWorks = () => {
     const describtionFive = "Spend some money and be a Pro user to get more unlocked feature";
     const titleFive = "Pro user";
     return (
-        <div className="mt-16 px-[60px]">
+        <div className="mt-16 px-2 lg:px-[60px]">
             <Heading heading={heading} subHeading={subHeading}></Heading>
             <div>
 
                 <div className="flex justify-center gap-6">
                     <div className="flex gap-3 items-center">
                         <WorksHeading title={titleOne} describtion={describtionOne}></WorksHeading>
-                        <FaArrowAltCircleRight className="text-xl text-[#815df6]" />
+                        <FaArrowAltCircleRight className="text-2xl lg:text-xl text-[#815df6]" />
                     </div>
                     <div>
-                        <img className="w-[15vw] rounded-xl" src={SignUp} alt="signup" />
+                        <img className="w-[40vw] lg:w-[15vw] rounded-xl" src={SignUp} alt="signup" />
                     </div>
                 </div>
 
@@ -49,8 +49,8 @@ const HowItWorks = () => {
 
                 <div className="flex justify-center gap-6">
                     <div className="flex gap-3 items-center">
-                        <img className="w-[15vw] rounded-xl" src={Profile} alt="signup" />
-                        <FaArrowAltCircleLeft className="text-xl text-[#815df6]" />
+                        <img className="w-[40vw] lg:w-[15vw] rounded-xl" src={Profile} alt="signup" />
+                        <FaArrowAltCircleLeft className="text-2xl lg:text-xl text-[#815df6]" />
                     </div>
                     <div className="flex gap-3 items-center">
                         <WorksHeading title={titleTwo} describtion={describtionTwo}></WorksHeading>
@@ -66,10 +66,10 @@ const HowItWorks = () => {
                 <div className="flex justify-center gap-6">
                     <div className="flex gap-3 items-center">
                         <WorksHeading title={titleThree} describtion={describtionThree}></WorksHeading>
-                        <FaArrowAltCircleRight className="text-xl text-[#815df6]" />
+                        <FaArrowAltCircleRight className="text-2xl lg:text-xl text-[#815df6]" />
                     </div>
                     <div>
-                        <img className="w-[15vw] rounded-xl" src={Participate} alt="signup" />
+                        <img className="w-[40vw] lg:w-[15vw] rounded-xl"  src={Participate} alt="signup" />
                     </div>
                 </div>
 
@@ -81,8 +81,8 @@ const HowItWorks = () => {
 
                 <div className="flex justify-center gap-6">
                     <div className="flex gap-3 items-center">
-                        <img className="w-[15vw] rounded-xl" src={Report} alt="signup" />
-                        <FaArrowAltCircleLeft className="text-xl text-[#815df6]" />
+                        <img className="w-[45vw] lg:w-[15vw] rounded-xl"  src={Report} alt="signup" />
+                        <FaArrowAltCircleLeft className="text-2xl lg:text-xl text-[#815df6]" />
                     </div>
                     <div className="flex gap-3 items-center">
                         <WorksHeading title={titleFour} describtion={describtionFour}></WorksHeading>
@@ -98,14 +98,14 @@ const HowItWorks = () => {
                 <div className="flex justify-center gap-6">
                     <div className="flex gap-3 items-center">
                         <WorksHeading title={titleFive} describtion={describtionFive}></WorksHeading>
-                        <FaArrowAltCircleRight className="text-xl text-[#815df6]" />
+                        <FaArrowAltCircleRight className="text-2xl lg:text-xl text-[#815df6]" />
                     </div>
                     <div>
-                        <img className="w-[10vw] rounded-xl" src={Pro} alt="signup" />
+                        <img className="w-[35vw] lg:w-[15vw] rounded-xl"  src={Pro} alt="signup" />
                     </div>
                 </div>
-                <div className="flex justify-center mt-2">
-                    <button className="bg-[#859770] px-3 py-2 rounded-xl text-white hover:bg-black duration-500">Learn More</button>
+                <div className="flex justify-center mt-4 lg:mt-2">
+                    <button className="bg-[#859770] text-xl px-3 py-2 rounded-xl text-white hover:bg-black duration-500">Learn More</button>
                 </div>
             </div>
         </div>

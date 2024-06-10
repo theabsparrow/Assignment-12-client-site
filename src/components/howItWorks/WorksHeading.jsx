@@ -4,7 +4,7 @@ const WorksHeading = ({title, describtion}) => {
     return (
         <div className="font-poppins">
             <h1 className="text-2xl font-bold">{title}</h1>
-            <p className="w-[15vw]">{describtion}</p>
+            <p className="w-[35vw] lg:w-[15vw]">{describtion}</p>
         </div>
     );
 };

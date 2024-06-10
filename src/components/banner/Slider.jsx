@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Slider = ({ firstSixCards }) => {
     return (
-        <div className='px-[60px] font-poppins'>
+        <div className='px-2 lg:px-[60px] font-poppins'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -25,13 +25,13 @@ const Slider = ({ firstSixCards }) => {
             >
                 {
                     firstSixCards.map(sixCard => <SwiperSlide key={sixCard._id}>
-                        <div className='felx flex-col items-center justify-center mt-10 h-[70vh]'>
+                        <div className='felx flex-col items-center justify-center mt-20 lg:mt-10 h-[70vh]'>
                             <div className='text-center flex justify-center'>
-                                <h1 className='text-white font-xl bg-[#DED66B69] px-3 py-2 rounded-lg'>category: <span>{sixCard.category}</span></h1>
+                                <h1 className='text-xl lg:text-normal text-white font-xl bg-[#DED66B69] px-3 py-2 rounded-lg'>category: <span>{sixCard.category}</span></h1>
                             </div>
-                            <div className='flex justify-center'>
-                                <div className='text-center space-y-6 mt-4 bg-[#D7D5DC69]  px-6 py-3 rounded-xl'>
-                                    <h1 className='text-6xl font-bold text-white' >{sixCard.title}</h1>
+                            <div className='flex justify-center mt-5 lg:mt-0'>
+                                <div className='text-center space-y-6 mt-4 bg-[#D7D5DC69] px-6 py-3 rounded-xl'>
+                                    <h1 className='text-5xl lg:text-6xl font-bold text-white' >{sixCard.title}</h1>
                                     <p className='text-white font-semibold text-xl'>{sixCard.description}</p>
                                 </div>
                             </div>

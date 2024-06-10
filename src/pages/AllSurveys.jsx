@@ -17,7 +17,7 @@ const AllSurveys = () => {
         setSort(e.target.value)
     }
     return (
-        <div className="font-poppins px-[60px] mt-6 space-y-5" >
+        <div className="font-poppins px-2 lg:px-[60px] mt-6 space-y-5" >
             <Helmet>
                 <title>All Surveys || SurveyAtlas</title>
             </Helmet>

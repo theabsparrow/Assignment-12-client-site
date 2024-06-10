@@ -53,7 +53,7 @@ const Login = () => {
         return
     }
     return (
-        <div className="font-poppins card-body w-[35vw] mx-auto shadow-xl mt-5 border rounded-xl">
+        <div className="font-poppins card-body lg:w-[35vw] mx-auto shadow-xl mt-5 border rounded-xl">
             <Helmet>
                 <title>Login || surveyAtlas</title>
             </Helmet>
