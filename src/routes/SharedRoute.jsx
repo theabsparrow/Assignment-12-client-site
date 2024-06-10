@@ -13,7 +13,7 @@ const SharedRoute = ({children}) => {
     </div>
     }
 
-    if(role === 'Serveyor' || role === 'Admin') return children;
+    if(role === 'Surveyor' || role === 'Admin') return children;
     return <Navigate to='/dashboard'></Navigate>;
 };
 

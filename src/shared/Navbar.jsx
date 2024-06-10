@@ -78,7 +78,7 @@ const Navbar = () => {
                             }
                         </summary>
                         <ul className="p-2 shadow menu dropdown-content z-[1] bg-[#859770] rounded-box w-[10vw]">
-                            {user ? <div className='flex flex-col justify-start'>
+                            {user ? <div className='flex flex-col space-y-4 justify-start'>
                                 {
                                     user && <div>
                                         <h1 className='text-[#35DC75CC] px-3 py-2 text-lg font-medium'>{user?.displayName}</h1>

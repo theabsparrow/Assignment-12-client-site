@@ -14,7 +14,7 @@ const SurveyorRoute = ({children}) => {
     </div>
     }
 
-    if(role === 'Serveyor') return children;
+    if(role === 'Surveyor') return children;
     return <Navigate to='/dashboard'></Navigate>;
 };
 SurveyorRoute.propTypes = {
