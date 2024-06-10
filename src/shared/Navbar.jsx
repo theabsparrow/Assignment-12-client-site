@@ -8,12 +8,16 @@ import Swal from 'sweetalert2';
 import useAuth from '../hooks/useAuth';
 import { CgProfile } from 'react-icons/cg';
 import { RxCross2 } from 'react-icons/rx';
+import useRole from '../hooks/useRole';
+import { FaCrown } from 'react-icons/fa';
 
 const Navbar = () => {
     const [theme, setTheme] = useState("light");
     const { user, logout } = useAuth();
     const navigate = useNavigate();
     const [display, setDisplay] = useState(false);
+    const [role] = useRole();
+
 
     useEffect(() => {
         localStorage.setItem("userTheme", theme)
@@ -63,7 +67,8 @@ const Navbar = () => {
             </div>
 
             {/* large device only */}
-            <div className='hidden lg:flex'>
+            <div className='hidden lg:flex items-center'>
+
                 <div className='flex items-center gap-3'>
                     <Navmenu address={"/"} label={"Home"}></Navmenu>
                     <Navmenu address={"/allsurveys"} label={"All Surveys"}></Navmenu>
@@ -97,6 +102,17 @@ const Navbar = () => {
                         </ul>
                     </details>
                 </div>
+
+                <div>
+                    {
+                        (user && role === 'Guest') && <>
+                            <div className='flex items-center'>
+                                <Navmenu address={"/payment"} label={"Be a Pro user"}></Navmenu>
+                                <FaCrown className='text-yellow-500 text-3xl' />
+                            </div>
+                        </>
+                    }
+                </div>
             </div>
 
             {/* small device */}
@@ -109,10 +125,10 @@ const Navbar = () => {
                 {user ? <div className='flex flex-col justify-start'>
                     <div className='flex'>
                         <Navmenu address={"/profile"} label={"Profile"}></Navmenu>
-                        
+
                     </div>
 
-                    <div>                    
+                    <div>
                         <h1 className='text-[#35DC75CC] px-3 py-2 text-lg font-medium'>{user?.displayName}</h1>
                     </div>
 

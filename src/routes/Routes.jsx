@@ -21,6 +21,7 @@ import TotalSurveys from "../components/dashboard/common/totalSurveys/TotalSurve
 import AdminRoute from "./AdminRoute";
 import SurveyorRoute from "./SurveyorRoute";
 import SharedRoute from "./SharedRoute";
+import Payment from "../pages/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -34,7 +35,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/profile',
-                element: <PrivateRout><Profile></Profile></PrivateRout>
+                element: (
+                    <PrivateRout>
+                        <Profile>
+
+                        </Profile>
+                    </PrivateRout>)
             },
             {
                 path: '/allsurveys',
@@ -43,6 +49,15 @@ export const router = createBrowserRouter([
             {
                 path: '/survey/:id',
                 element: <SurveyDetails></SurveyDetails>
+            },
+            {
+                path: '/payment',
+                element: (
+                    <PrivateRout>
+                        <Payment>
+
+                        </Payment>
+                    </PrivateRout>)
             }
         ]
     },

@@ -24,3 +24,4 @@ The NPm packages I have used:
 9. npm install tanstack query
 10. npm install headless ui react
 11. npm install swiper
+12. npm install stripe
