@@ -4,8 +4,8 @@ const Comment = ({ resentComment }) => {
     const { comment, userName, creationTime } = resentComment;
     const date = new Date(creationTime);
 
-    const formattedDate = date.toLocaleDateString(); // e.g., 6/11/2024
-    const formattedTime = date.toLocaleTimeString(); // e.g., 3:37:51 PM
+    const formattedDate = date.toLocaleDateString(); 
+    const formattedTime = date.toLocaleTimeString(); 
 
     return (
         <div className='font-poppins'>

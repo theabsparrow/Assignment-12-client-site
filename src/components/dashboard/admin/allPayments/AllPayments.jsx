@@ -3,7 +3,6 @@ import useAllPayments from "../../../../hooks/useAllPayments";
 
 const AllPayments = () => {
     const [paymentInfo] = useAllPayments();
-    console.log(paymentInfo)
     return (
         <div className="flex justify-center w-[calc(100vw-275px)] font-poppins">
 

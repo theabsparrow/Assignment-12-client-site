@@ -44,20 +44,34 @@ const TableRow = ({ surveyCards, isLoading, refetch, role }) => {
                             </td>
 
                             {
-                                role === "Admin"? <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
+                                role === "Admin" ? <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
+                                    <div className=" overflow-hidden">
+                                        <h4 className="text-gray-700 dark:text-gray-200 bg-[#4E31B069] inline px-3 py-1 font-normal rounded-full">{surveyCard.report}</h4>
+                                    </div>
+                                </td> : <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
+                                    <div className=" overflow-hidden">
+                                        <h4 className="text-gray-700 dark:text-gray-200 bg-[#4E31B069] inline px-3 py-1 font-normal rounded-full">update</h4>
+                                    </div>
+                                </td>
+                            }
+
+                            {
+                                role === 'Admin' && <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
                                 <div className=" overflow-hidden">
                                     <h4 className="text-gray-700 dark:text-gray-200 bg-[#4E31B069] inline px-3 py-1 font-normal rounded-full">{surveyCard.status}</h4>
-                                </div>
-                            </td> : <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
-                                <div className=" overflow-hidden">
-                                    <h4 className="text-gray-700 dark:text-gray-200 bg-[#4E31B069] inline px-3 py-1 font-normal rounded-full">update</h4>
                                 </div>
                             </td>
                             }
 
-                            
+                            {
+                                role === 'Admin' && <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
+                                <div className=" overflow-hidden">
+                                    <h4 className="text-gray-700 dark:text-gray-200 bg-[#4E31B069] inline px-3 py-1 font-normal rounded-full">Update</h4>
+                                </div>
+                            </td>
+                            }
 
-                           
+
                         </tr>
                     ))
                 }

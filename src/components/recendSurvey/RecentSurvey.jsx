@@ -19,7 +19,7 @@ const RecentSurvey = () => {
     return (
         <div className="font-poppins px-2 lg:px-[60px] mt-16">
             <Heading heading={"Most Recent Surveys"} subHeading={subHeading}></Heading>
-            <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto border justify-center gap-4 mt-5">
+            <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto justify-center gap-4 mt-5">
                 {
                     lastSixCards.map(lastSixCard => <Recent key={lastSixCard._id} lastSixCard={lastSixCard}></Recent>)
                 }

@@ -90,6 +90,7 @@ const SurveyDetails = () => {
         }
         try {
             await mutateAsync(commentInfo)
+            e.target.reset();
         }
         catch (error) {
             console.log(error.message)

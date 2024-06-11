@@ -33,8 +33,17 @@ const TotalSurveys = () => {
                                 <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">No Votes</th>
 
                                 <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Total Votes</th>
+
+                                {
+                                    role === 'Admin' && <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Report Status</th>
+                                }
+
+                                <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">{role === 'Admin' ? "Status" : "Update"}</th>
+
+                                {
+                                  role === 'Admin' && <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Update Status</th>
+                                }
                                 
-                                <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">{role === 'Admin'? "Status": "Update"}</th>
                             </tr>
                         </thead>
 

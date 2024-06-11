@@ -44,46 +44,46 @@ const AllUsers = () => {
                         </thead>
 
                         <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                        {
-                            users.map((user, index) => (
-                                <tr key={user._id}>
-                                <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                                    <div>
-                                        <h2 className="font-medium text-gray-800 dark:text-white "><span>No.</span> {index+1}</h2>
-                                    </div>
-                                </td>
+                            {
+                                users.map((user, index) => (
+                                    <tr key={user._id}>
+                                        <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                                            <div>
+                                                <h2 className="font-medium text-gray-800 dark:text-white "><span>No.</span> {index + 1}</h2>
+                                            </div>
+                                        </td>
 
-                                <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
-                                    <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
-                                        {user.name}
-                                    </div>
-                                </td>
+                                        <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
+                                            <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                                                {user.name}
+                                            </div>
+                                        </td>
 
-                                <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div>
-                                        <h4 className="text-gray-700 dark:text-gray-200 bg-[#4E31B069] inline px-3 py-1 font-normal rounded-full">{user.email}</h4>
-                                    </div>
-                                </td>
+                                        <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                            <div>
+                                                <h4 className="text-gray-700 dark:text-gray-200 bg-[#4E31B069] inline px-3 py-1 font-normal rounded-full">{user.email}</h4>
+                                            </div>
+                                        </td>
 
-                                <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div className="flex items-center">
-                                        <img className="w-[4vw] rounded-full" src={user.photo} alt="" />
-                                    </div>
-                                </td>
+                                        <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                            <div className="flex items-center">
+                                                <img className="w-[4vw] rounded-full" src={user.photo} alt="" />
+                                            </div>
+                                        </td>
 
-                                <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
-                                    <div className=" overflow-hidden">
-                                        <h1 className={` text-gray-700 dark:text-gray-200 inline px-3 py-1 rounded-full ${user.role === "Admin" && 'bg-[#DB491769]'} ${user.role === "Surveyor" && 'bg-[#5DF5F569]'} ${user.role === "Guest" && 'bg-[#EB30C969]'} ${user.role === "Pro user" && 'bg-[#347E4C69]'} ${user.role === "Pro-User" && 'bg-[#1E842D]'} ${user.role === "Pro user" && 'bg-[#347E4C69]'}`}>{user.role}</h1>
-                                    </div>
-                                </td>
+                                        <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
+                                            <div className=" overflow-hidden">
+                                                <h1 className={` text-gray-700 dark:text-gray-200 inline px-3 py-1 rounded-full ${user.role === "Admin" && 'bg-[#DB491769]'} ${user.role === "Surveyor" && 'bg-[#5DF5F569]'} ${user.role === "Guest" && 'bg-[#EB30C969]'} ${user.role === "Pro user" && 'bg-[#347E4C69]'} ${user.role === "Pro-User" && 'bg-[#1E842D]'} ${user.role === "Pro user" && 'bg-[#347E4C69]'}`}>{user.role}</h1>
+                                            </div>
+                                        </td>
 
-                                <td className='px-4 py-4 text-sm whitespace-nowrap '>
-                                    <h1 className="text-white">{user.status}</h1>
-                                </td>
-                            </tr>
-                            ))
-                        }
-                            
+                                        <td className='px-4 py-4 text-sm whitespace-nowrap '>
+                                            <h1 className="text-white">{user.status}</h1>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+
                         </tbody>
 
                     </table>

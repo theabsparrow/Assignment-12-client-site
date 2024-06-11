@@ -13,7 +13,7 @@ const axiosPublic = useAxiosPublic()
             return data;
         }
     })
-    return [comments,refetch, isLoading]
+    return [comments, refetch, isLoading ]
 };
 
 export default useComment;
