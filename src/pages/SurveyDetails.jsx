@@ -1,6 +1,5 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
 import Agriculture from '../../public/images/Agriculture.png';
 import Education from '../../public/images/Education.png';
 import Nature from '../../public/images/Nature.png';
@@ -17,6 +16,11 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import useRole from "../hooks/useRole";
 import Navbar from "../shared/Navbar";
+import { axiosSecure } from "../hooks/useAxiosSecure";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import useComment from "../hooks/useComment";
+import Comment from "../components/comment/Comment";
+import { useEffect, useState } from "react";
 
 
 const SurveyDetails = () => {
@@ -24,9 +28,32 @@ const SurveyDetails = () => {
     const axiosPublic = useAxiosPublic();
     const { user } = useAuth();
     const navigate = useNavigate();
-    const [role] = useRole();
+    const [role , ] = useRole();
+    const [comments, refetch] = useComment(id);
 
+    const [commentData, setCommentData] = useState([]);
 
+    useEffect(() => {
+        const latestComment = comments.sort((a,b) => new Date(b.creationTime) - new Date(a.creationTime));
+        setCommentData(latestComment)
+    },[comments])
+
+    const { mutateAsync } = useMutation({
+        mutationFn: async (commentInfo) => {
+            const { data } = await axiosSecure.post(`/comment/`, commentInfo)
+            console.log(data)
+        },
+        onSuccess: () => {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Comment posted successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            refetch()
+        }
+    })
     const { data: survey = {}, isLoading } = useQuery({
         queryKey: ['survey', id],
         queryFn: async () => {
@@ -34,7 +61,6 @@ const SurveyDetails = () => {
             return data
         }
     })
-
     const handleLoginAlert = () => {
         Swal.fire({
             title: "Opps",
@@ -51,6 +77,29 @@ const SurveyDetails = () => {
         });
     }
 
+
+    const hamdleComment = async (e) => {
+        e.preventDefault();
+        const comment = e.target.comment.value;
+        const commentId = id;
+        const userName = user.displayName;
+        const userEmail = user.email;
+        const creationTime = new Date();
+        const commentInfo = {
+            comment, commentId, userName, userEmail, creationTime
+        }
+        try {
+            await mutateAsync(commentInfo)
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+
+    
+
+
+  
 
     if (isLoading) {
         return <div className="flex flex-col m-8 rounded shadow-md animate-pulse">
@@ -120,6 +169,12 @@ const SurveyDetails = () => {
                         </div>
                     }
 
+                    <div className="space-y-6">
+                       {
+                        commentData.map(resentComment => <Comment key={resentComment._id} resentComment={resentComment}></Comment>)
+                       }
+                    </div>
+
                     <div>
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
                         <dialog id="surveyModal" className="modal">
@@ -141,12 +196,12 @@ const SurveyDetails = () => {
 
                 {
                     role === "Pro-User" && <div className="mt-3 ">
-                        <form className="fixed bottom-1 left-[40%] w-[30vw]">
+                        <form onSubmit={hamdleComment} className="fixed bottom-1 left-[40%] w-[30vw]">
                             <div className="flex justify-between w-full">
                                 <div className="flex-grow">
-                                    <textarea className="block w-full rounded-lg border border-[#859770] px-4 dark:text-white dark:bg-gray-900 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40  dark:focus:border-blue-300" name="comment" id="comment" cols="20" rows="3"></textarea>
+                                    <textarea className="block w-full rounded-lg border border-[#859770] px-4 dark:text-white dark:bg-gray-900 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40  dark:focus:border-blue-300" name="comment" id="comment" cols="20" rows="3" placeholder="drop your valuable comment here"></textarea>
                                 </div>
-                                <div className="border">
+                                <div>
                                     <button className="bg-[#859770] text-white font-medium px-3 py-2 rounded-xl" type="submit">Comment</button>
                                 </div>
                             </div>
