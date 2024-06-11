@@ -22,6 +22,7 @@ import AdminRoute from "./AdminRoute";
 import SurveyorRoute from "./SurveyorRoute";
 import SharedRoute from "./SharedRoute";
 import Payment from "../pages/Payment";
+import ProUserRoute from "./ProUserRoute";
 
 export const router = createBrowserRouter([
     {
@@ -170,9 +171,11 @@ export const router = createBrowserRouter([
                 path: 'myComment',
                 element: (
                     <PrivateRout>
-                        <MyComments>
+                        <ProUserRoute>
+                            <MyComments>
 
-                        </MyComments>
+                            </MyComments>
+                        </ProUserRoute>
                     </PrivateRout>)
             }
         ]

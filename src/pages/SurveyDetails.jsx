@@ -15,6 +15,7 @@ import Question from "../components/question/Question";
 import SurveyForm from "../components/surveyForm/SurveyForm";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import useRole from "../hooks/useRole";
 
 
 const SurveyDetails = () => {
@@ -22,7 +23,8 @@ const SurveyDetails = () => {
     const axiosPublic = useAxiosPublic();
     const { user } = useAuth();
     const navigate = useNavigate();
-   
+    const [role] = useRole();
+
 
     const { data: survey = {}, isLoading } = useQuery({
         queryKey: ['survey', id],
@@ -97,13 +99,23 @@ const SurveyDetails = () => {
                 </div>
 
                 {
+                    (role === 'Admin' || role === 'Surveyor') && <div className="mt-5  text-center">
+                        <span className="text-xl font-medium text-red-600">Only User and Pro-User can participate in surveys</span>
+                    </div>
+                }
+
+
+                {
                     user ? <div className='mt-4 flex justify-center'>
-                        <button onClick={() => document.getElementById('surveyModal').showModal()} className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>Participate in Surveys</button>
+                        <button
+                            disabled={role === 'Admin' || role === 'Surveyor'}
+                            onClick={() => document.getElementById('surveyModal').showModal()}
+                            className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>
+                            Participate in Surveys</button>
                     </div> : <div className='mt-4 flex justify-center'>
                         <button onClick={handleLoginAlert} className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>Participate in Surveys</button>
                     </div>
                 }
-
 
                 <div>
                     {/* Open the modal using document.getElementById('ID').showModal() method */}

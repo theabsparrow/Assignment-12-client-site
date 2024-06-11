@@ -1,17 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+
+import useAllUsers from "../../../../hooks/useAllUsers";
 
 
 const AllUsers = () => {
-    const axiosSecure = useAxiosSecure();
-
-    const { data: users = [], isLoading, refetch } = useQuery({
-        queryKey: ['users'],
-        queryFn: async () => {
-            const { data } = await axiosSecure('/users');
-            return data
-        }
-    })
+    const [users, isLoading] = useAllUsers()
     if (isLoading) {
         return <div className="min-h-screen flex items-center justify-center">
             <span className="loading loading-bars loading-xs"></span>
@@ -81,7 +73,7 @@ const AllUsers = () => {
 
                                 <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
                                     <div className=" overflow-hidden">
-                                        <h1 className={` text-gray-700 dark:text-gray-200 inline px-3 py-1 rounded-full ${user.role === "Admin" && 'bg-[#DB491769]'} ${user.role === "Surveyor" && 'bg-[#5DF5F569]'} ${user.role === "Guest" && 'bg-[#EB30C969]'} ${user.role === "Pro user" && 'bg-[#347E4C69]'}`}>{user.role}</h1>
+                                        <h1 className={` text-gray-700 dark:text-gray-200 inline px-3 py-1 rounded-full ${user.role === "Admin" && 'bg-[#DB491769]'} ${user.role === "Surveyor" && 'bg-[#5DF5F569]'} ${user.role === "Guest" && 'bg-[#EB30C969]'} ${user.role === "Pro user" && 'bg-[#347E4C69]'} ${user.role === "Pro-User" && 'bg-[#1E842D]'} ${user.role === "Pro user" && 'bg-[#347E4C69]'}`}>{user.role}</h1>
                                     </div>
                                 </td>
 

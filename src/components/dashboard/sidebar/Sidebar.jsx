@@ -98,8 +98,8 @@ const Sidebar = () => {
 
                             {role === 'Admin' && <AdminMenu></AdminMenu>}
                             {role === 'Surveyor' && <SurveyorMenu></SurveyorMenu>}
-                            {role === 'Guest' && <UserMenu></UserMenu>}
-                            {role === 'Pro User' && <ProUserMenu></ProUserMenu>}
+                            {(role === 'Guest' || role === 'Pro-User') && <UserMenu></UserMenu>}
+                            {role === 'Pro-User' && <ProUserMenu></ProUserMenu>}
                             {(role === 'Surveyor' || role === 'Admin') && <SharedMenu></SharedMenu>}
                             
                         </nav>
@@ -139,8 +139,8 @@ const Sidebar = () => {
 
                             {role === 'Admin' && <AdminMenu></AdminMenu>}
                             {role === 'Surveyor' && <SurveyorMenu></SurveyorMenu>}
-                            {role === 'Guest' && <UserMenu></UserMenu>}
-                            {role === 'Pro User' && <ProUserMenu></ProUserMenu>}
+                            {(role === 'Guest' || role === 'Pro-User') && <UserMenu></UserMenu>}
+                            {role === 'Pro-User' && <ProUserMenu></ProUserMenu>}
                             {(role === 'Surveyor' || role === 'Admin') && <SharedMenu></SharedMenu>}
 
                             
