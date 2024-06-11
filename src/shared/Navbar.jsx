@@ -107,8 +107,8 @@ const Navbar = () => {
                     {
                         (user && role === 'Guest') && <>
                             <div className='flex items-center'>
-                                <Navmenu address={"/payment"} label={"Be a Pro user"}></Navmenu>
-                                <FaCrown className='text-yellow-500 text-3xl' />
+                                <Navmenu address={"/payment"} label={"Be a Pro user"} icon={FaCrown}></Navmenu>
+                                {/* <FaCrown className='text-yellow-500 text-3xl' /> */}
                             </div>
                         </>
                     }
@@ -141,7 +141,12 @@ const Navbar = () => {
                 </>}
             </div>
 
-            <div>
+            <div className='flex items-center gap-2'>
+                {
+                    role === "Pro-User" && <div>
+                        <FaCrown className='text-yellow-500 text-3xl'></FaCrown>
+                    </div>
+                }
                 <div className="dropdown">
                     <button tabIndex={0} role="button"><MdDarkMode className='text-5xl lg:text-3xl text-black'></MdDarkMode> </button>
                     <ul onChange={handleTheme} tabIndex={0} className="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box">

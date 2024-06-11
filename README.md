@@ -25,3 +25,4 @@ The NPm packages I have used:
 10. npm install headless ui react
 11. npm install swiper
 12. npm install stripe
+13. npm install react datepicker

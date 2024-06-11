@@ -48,10 +48,6 @@ export const router = createBrowserRouter([
                 element: <AllSurveys></AllSurveys>
             },
             {
-                path: '/survey/:id',
-                element: <SurveyDetails></SurveyDetails>
-            },
-            {
                 path: '/payment',
                 element: (
                     <PrivateRout>
@@ -69,6 +65,10 @@ export const router = createBrowserRouter([
     {
         path: '/signup',
         element: <SignUp></SignUp>
+    },
+    {
+        path: '/survey/:id',
+        element: <SurveyDetails></SurveyDetails>
     },
     {
         path: '/dashboard',
