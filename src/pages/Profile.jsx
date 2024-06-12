@@ -20,7 +20,7 @@ const Profile = () => {
     //     </div>
     // }
     return (
-        <div className="font-poppins mt-10">
+        <div className="lg:w-[calc(100vw-275px)] font-poppins mt-10">
             <Helmet>
                 <title>Profile || surveyAtlas</title>
             </Helmet>
@@ -28,7 +28,7 @@ const Profile = () => {
                 <Helmet>
                     <title>Profile</title>
                 </Helmet>
-                <div className='bg-white shadow-lg rounded-2xl w-3/5'>
+                <div className='bg-white shadow-lg rounded-2xl lg:w-[70vw] lg:h-[80vh]'>
                     <img
                         alt='profile'
                         src={cover}

@@ -1,10 +1,16 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
-const SurveyForm = ({ questions }) => {
+const SurveyForm = ({ questions, survey }) => {
     const [firstSelect, setFirstSelect] = useState("");
     const [secondSelect, setSecondSelect] = useState("");
     const [thirdSelect, setThirdSelect] = useState("");
+    const { user } = useAuth();
+    const axiosSecure = useAxiosSecure()
 
     const firstHandleChange = e => {
         setFirstSelect(e.target.value);
@@ -18,21 +24,55 @@ const SurveyForm = ({ questions }) => {
         setThirdSelect(e.target.value)
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const resultOne = firstSelect;
         const resultTwo = secondSelect;
         const resultThree = thirdSelect;
-        if(!resultOne) {
-            return alert ("you didn't answer the first question");
+        if (!resultOne) {
+            return toast.error("You didn't answer the first question")
         }
-        if(!resultTwo) {
-            return alert ("you didn't answer the second question");
+        if (!resultTwo) {
+            return toast.error("You didn't answer the second question")
         }
-        if(!resultThree) {
-            return alert ("you didn't answer the third question");
+        if (!resultThree) {
+            return toast.error("You didn't answer the third question")
         }
-        console.log(resultOne, resultTwo, resultThree)
+
+        const voteData = [
+            { questionId: 1, vote: resultOne },
+            { questionId: 2, vote: resultTwo },
+            { questionId: 3, vote: resultThree },
+        ]
+        const creationTime = new Date();
+
+        try {
+            const voteInformation = {
+                surveyId: survey._id,
+                surveyTitle: survey.title,
+                surveyCategory: survey.category,
+                voterName: user?.displayName,
+                voterEmail: user?.email,
+                time: creationTime,
+                voteInfo: voteData
+            }
+            const { data } = await axiosSecure.post('/vote', voteInformation)
+        
+            if (data.VoteResult.modifiedCount && data.result.insertedId) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "You have voted successfully successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+        catch (error) {
+            console.log(error)
+            console.log(error.response.data);
+            toast.error("you have already voted in this survey. So you can't vote again")
+        }
     }
 
     return (
@@ -77,5 +117,6 @@ const SurveyForm = ({ questions }) => {
 
 SurveyForm.propTypes = {
     questions: PropTypes.array,
+    survey: PropTypes.object,
 }
 export default SurveyForm;

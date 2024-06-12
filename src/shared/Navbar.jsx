@@ -89,9 +89,7 @@ const Navbar = () => {
                                         <h1 className='text-[#35DC75CC] px-3 py-2 text-lg font-medium'>{user?.displayName}</h1>
                                     </div>
                                 }
-                                <div>
-                                    <Navmenu address={"/profile"} label={"Profile"}></Navmenu>
-                                </div>
+
                                 <div>
                                     <button onClick={handleLogOut} className='text-white px-3 py-2 font-medium text-lg hover:bg-[white] hover:text-[#859770] rounded-xl'>Log out</button>
                                 </div>
@@ -122,6 +120,16 @@ const Navbar = () => {
                     <Navmenu address={"/allsurveys"} label={"All Surveys"}></Navmenu>
                     <Navmenu address={"/dashboard"} label={"Dashboard"}></Navmenu>
                 </div>
+
+                {
+                    (user && role === 'Guest') && <>
+                        <div className='flex items-center'>
+                            <Navmenu address={"/payment"} label={"Be Pro user"} icon={FaCrown}></Navmenu>
+                            {/* <FaCrown className='text-yellow-500 text-3xl' /> */}
+                        </div>
+                    </>
+                }
+
                 {user ? <div className='flex flex-col justify-start'>
                     <div className='flex'>
                         <Navmenu address={"/profile"} label={"Profile"}></Navmenu>

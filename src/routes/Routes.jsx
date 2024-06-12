@@ -9,7 +9,6 @@ import AllSurveys from "../pages/AllSurveys";
 import SurveyDetails from "../pages/SurveyDetails";
 import DashboardLayout from "../layout/DashboardLayout";
 import PrivateRout from "./PrivateRout";
-import Statistic from "../components/dashboard/common/statistic/Statistic";
 import AllPayments from "../components/dashboard/admin/allPayments/AllPayments";
 import AllUsers from "../components/dashboard/admin/allUsers/AllUsers";
 import CreatSurvey from "../components/dashboard/surveyor/creatSurvey/CreatSurvey";
@@ -23,6 +22,8 @@ import SurveyorRoute from "./SurveyorRoute";
 import SharedRoute from "./SharedRoute";
 import Payment from "../pages/Payment";
 import ProUserRoute from "./ProUserRoute";
+import SurveyResponse from "../components/dashboard/common/surveyresponse/SurveyResponse";
+
 
 export const router = createBrowserRouter([
     {
@@ -33,15 +34,6 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-            },
-            {
-                path: '/profile',
-                element: (
-                    <PrivateRout>
-                        <Profile>
-
-                        </Profile>
-                    </PrivateRout>)
             },
             {
                 path: '/allsurveys',
@@ -76,10 +68,15 @@ export const router = createBrowserRouter([
         children: [
             // common rout
             {
-                index: true,
-                element: <PrivateRout><Statistic></Statistic></PrivateRout>,
-            },
+                path: '/dashboard',
+                element: (
+                    <PrivateRout>
+                        <Profile>
 
+                        </Profile>
+                    </PrivateRout>)
+            },
+            
 
             // common rout for admin and surveyor only
             {
@@ -90,6 +87,16 @@ export const router = createBrowserRouter([
                             <TotalSurveys>
 
                             </TotalSurveys>
+                        </SharedRoute>
+                    </PrivateRout>),
+            },
+
+            {
+                path: 'surveyRespons',
+                element: (
+                    <PrivateRout>
+                        <SharedRoute>
+                            <SurveyResponse></SurveyResponse>
                         </SharedRoute>
                     </PrivateRout>),
             },
@@ -133,7 +140,7 @@ export const router = createBrowserRouter([
                     </PrivateRout>),
             },
             {
-                path: 'updateSurvey',
+                path: 'totalSurveys/update',
                 element: (
                     <PrivateRout>
                         <SurveyorRoute>

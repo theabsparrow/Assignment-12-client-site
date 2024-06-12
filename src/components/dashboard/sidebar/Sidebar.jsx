@@ -52,7 +52,7 @@ const Sidebar = () => {
     return (
         <>
             {/* Small Screen Navbar */}
-            <div className='bg-[#859770] text-[#35DC75CC] flex justify-between md:hidden'>
+            <div className='bg-[#859770] z-20 text-[#35DC75CC] flex justify-between md:hidden'>
                 <div>
                     <div className='block cursor-pointer p-4 font-bold'>
                         <Link className='flex items-center gap-2' to='/'>
@@ -77,6 +77,7 @@ const Sidebar = () => {
             </div>
 
             {/* Sidebar */}
+
             {/* small device */}
             <div
                 className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#859770] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
@@ -93,15 +94,17 @@ const Sidebar = () => {
 
                     {/* Nav Items */}
                     <div className='flex flex-col justify-between flex-1 mt-6'>
-                        <nav>
-                            <MenuItem label={"Statistic"} address={'/dashboard'} icon={BsGraphUp}></MenuItem>
+                    <nav>
+                            <MenuItem label={"Profile"} address={'/dashboard'} icon={CgProfile} image={user?.photoURL}></MenuItem>
 
                             {role === 'Admin' && <AdminMenu></AdminMenu>}
                             {role === 'Surveyor' && <SurveyorMenu></SurveyorMenu>}
                             {(role === 'Guest' || role === 'Pro-User') && <UserMenu></UserMenu>}
                             {role === 'Pro-User' && <ProUserMenu></ProUserMenu>}
                             {(role === 'Surveyor' || role === 'Admin') && <SharedMenu></SharedMenu>}
-                            
+
+
+
                         </nav>
                     </div>
                 </div>
@@ -135,7 +138,7 @@ const Sidebar = () => {
                     {/* Nav Items */}
                     <div className='flex flex-col justify-between flex-1 mt-6'>
                         <nav>
-                            <MenuItem label={"Statistic"} address={'/dashboard'} icon={BsGraphUp}></MenuItem>
+                            <MenuItem label={"Profile"} address={'/dashboard'} icon={CgProfile} image={user?.photoURL}></MenuItem>
 
                             {role === 'Admin' && <AdminMenu></AdminMenu>}
                             {role === 'Surveyor' && <SurveyorMenu></SurveyorMenu>}
@@ -143,7 +146,7 @@ const Sidebar = () => {
                             {role === 'Pro-User' && <ProUserMenu></ProUserMenu>}
                             {(role === 'Surveyor' || role === 'Admin') && <SharedMenu></SharedMenu>}
 
-                            
+
 
                         </nav>
                     </div>
@@ -152,7 +155,7 @@ const Sidebar = () => {
                 {/* second part */}
                 <div>
                     <hr />
-                    <MenuItem label={"Profile"} address={'/profile'} icon={CgProfile} image={user?.photoURL}></MenuItem>
+
 
                     <button
                         onClick={handleLogOut}

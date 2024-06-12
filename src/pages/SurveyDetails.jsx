@@ -252,7 +252,7 @@ const SurveyDetails = () => {
                             <div className="modal-box">
                                 <div className="space-y-6">
                                     <div>
-                                        <SurveyForm questions={questions}></SurveyForm>
+                                        <SurveyForm questions={questions} survey={survey}></SurveyForm>
 
                                     </div>
                                     <form method="dialog">

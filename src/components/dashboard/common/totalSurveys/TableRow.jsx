@@ -4,6 +4,7 @@ import UpdateModal from '../../../modal/UpdateModal';
 import { useMutation } from '@tanstack/react-query';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 
 const TableRow = ({ surveyCard, isLoading, refetch, role, index }) => {
@@ -89,7 +90,7 @@ const axiosSecure = useAxiosSecure()
                         </div>
                     </td> : <td className={`px-4 py-4 text-sm whitespace-nowrap `}>
                         <div className=" overflow-hidden">
-                            <h4 className="text-gray-700 dark:text-gray-200 bg-[#4E31B069] inline px-3 py-1 font-normal rounded-full">update</h4>
+                            <Link to='update' className="text-gray-700 dark:text-gray-200 bg-[#4E31B069] inline px-3 py-1 font-normal rounded-full">update</Link>
                         </div>
                     </td>
                 }
