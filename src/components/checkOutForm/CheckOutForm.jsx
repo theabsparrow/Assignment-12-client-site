@@ -14,7 +14,7 @@ const CheckOutForm = () => {
     const axiosSecure = useAxiosSecure();
     const [clientSecret, setClientSecret] = useState('');
     const { user } = useAuth();
-    const [role, refetch] = useRole();
+    const [role, isLoading, refetch] = useRole();
     const navigate = useNavigate();
 
     const totalPrice = 10
@@ -84,11 +84,9 @@ const CheckOutForm = () => {
                     role: role,
                 }
                 const res = await axiosSecure.post('/payments', paymentInfo);
-                refetch()
-                console.log(res);
-
+                console.log(res)
                 navigate('/');
-
+                refetch()
 
             }
         }

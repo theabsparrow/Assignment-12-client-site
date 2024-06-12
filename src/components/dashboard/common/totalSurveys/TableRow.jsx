@@ -1,14 +1,47 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import UpdateModal from '../../../modal/UpdateModal';
+import { useMutation } from '@tanstack/react-query';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 
 const TableRow = ({ surveyCard, isLoading, refetch, role, index }) => {
     const [isOpen, setIsOpen] = useState(false);
+const axiosSecure = useAxiosSecure()
 
-    const modalHandler = (selected) => [
-        console.log('user role updated', selected)
-    ]
+    const {mutateAsync} = useMutation({
+        mutationFn: async(statusInfo) => {
+            const {data} = await axiosSecure.patch(`/totalsurvey/update/${surveyCard?._id}`, statusInfo);
+            return data
+        },
+        onSuccess: (data) => {
+            console.log(data);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "status updated successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            refetch()
+            setIsOpen(false)
+        }
+    })
+
+
+    const modalHandler = async (selected) => {
+        console.log(selected)
+        const statusInfo = {
+            status: selected,
+        }
+        try {
+            await mutateAsync(statusInfo)
+        }
+        catch(error) {
+            console.log(error)
+        }
+    }
 
     return (
         <>

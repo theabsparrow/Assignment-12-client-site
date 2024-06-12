@@ -21,6 +21,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import useComment from "../hooks/useComment";
 import Comment from "../components/comment/Comment";
 import { useEffect, useState } from "react";
+import RequestModal from "../components/modal/RequestModal";
 
 
 const SurveyDetails = () => {
@@ -30,9 +31,69 @@ const SurveyDetails = () => {
     const navigate = useNavigate();
     const [role,] = useRole();
     const [comments, refetch] = useComment(id);
-
     const [commentData, setCommentData] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
+    // single data get from database
+    const { data: survey = {}, isLoading } = useQuery({
+        queryKey: ['survey', id],
+        queryFn: async () => {
+            const { data } = await axiosPublic.get(`/surveys/${id}`);
+            return data
+        }
+    })
+    const { title, description, category, creationTime, deadline, status, totalVotes, totalYesVotes, totalNoVotes, questions, _id } = survey;
+
+
+    // requested modal related function
+    const closeModal = () => {
+        setIsModalOpen(false)
+    };
+
+    const modalHandler = async () => {
+        const creationTime = new Date();
+        console.log("reported successfully")
+        try {
+            const reportInfo = {
+                surveyName: title,
+                surveydetail: description,
+                surveyCategory: category,
+                surveyId: _id,
+                userName: user?.displayName,
+                userEmail: user?.email,
+                time: creationTime
+            }
+
+            const { data } = await axiosSecure.post('/report', reportInfo);
+            console.log(data.reportResult, data.result );
+            if(data.reportResult.modifiedCount && data.result.insertedId){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "reported successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                closeModal()
+            }
+            
+        }
+        catch (error){
+            console.log(error.response.data);
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error.response.data,
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+              closeModal()
+        }
+        
+    }
+
+
+    // comment posting to database
     useEffect(() => {
         const latestComment = comments.sort((a, b) => new Date(b.creationTime) - new Date(a.creationTime));
         setCommentData(latestComment)
@@ -54,13 +115,8 @@ const SurveyDetails = () => {
             refetch()
         }
     })
-    const { data: survey = {}, isLoading } = useQuery({
-        queryKey: ['survey', id],
-        queryFn: async () => {
-            const { data } = await axiosPublic.get(`/surveys/${id}`);
-            return data
-        }
-    })
+
+    // login related functgion
     const handleLoginAlert = () => {
         Swal.fire({
             title: "Opps",
@@ -77,7 +133,7 @@ const SurveyDetails = () => {
         });
     }
 
-
+    // comment related funvtion
     const hamdleComment = async (e) => {
         e.preventDefault();
         const comment = e.target.comment.value;
@@ -112,7 +168,7 @@ const SurveyDetails = () => {
             </div>
         </div>
     }
-    const { title, description, category, creationTime, deadline, status, totalVotes, totalYesVotes, totalNoVotes, questions } = survey;
+
     return (
         <div>
             <Navbar></Navbar>
@@ -159,18 +215,32 @@ const SurveyDetails = () => {
 
 
                     {
-                        user ? <div className='mt-4 flex justify-center'>
-                            <button
-                                disabled={role === 'Admin' || role === 'Surveyor'}
-                                onClick={() => document.getElementById('surveyModal').showModal()}
-                                className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>
-                                Participate in Surveys</button>
+                        user ? <div className="flex justify-between items-center">
+                            <div className='mt-4 flex justify-center'>
+                                <button
+                                    disabled={role === 'Admin' || role === 'Surveyor'}
+                                    onClick={() => document.getElementById('surveyModal').showModal()}
+                                    className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>
+                                    Participate in Surveys</button>
+                            </div>
+                            <div className="mt-4 flex justify-center">
+                                <button
+                                    onClick={() => setIsModalOpen(true)}
+                                    disabled={role === 'Admin' || role === 'Surveyor'}
+                                    className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>
+                                    Report
+                                </button>
+                            </div>
+                            <RequestModal
+                                isOpen={isModalOpen}
+                                closeModal={closeModal}
+                                modalHandler={modalHandler}></RequestModal>
                         </div> : <div className='mt-4 flex justify-center'>
                             <button onClick={handleLoginAlert} className='bg-[#19512B] hover:bg-black duration-500 px-3 py-2 rounded-xl text-white text-lg font-medium'>Participate in Surveys</button>
                         </div>
                     }
 
-                    <div className="space-y-6">
+                    <div className="space-y-6 mt-5">
                         {
                             commentData.map(resentComment => <Comment key={resentComment._id} resentComment={resentComment}></Comment>)
                         }
