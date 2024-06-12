@@ -28,15 +28,15 @@ const SurveyDetails = () => {
     const axiosPublic = useAxiosPublic();
     const { user } = useAuth();
     const navigate = useNavigate();
-    const [role , ] = useRole();
+    const [role,] = useRole();
     const [comments, refetch] = useComment(id);
 
     const [commentData, setCommentData] = useState([]);
 
     useEffect(() => {
-        const latestComment = comments.sort((a,b) => new Date(b.creationTime) - new Date(a.creationTime));
+        const latestComment = comments.sort((a, b) => new Date(b.creationTime) - new Date(a.creationTime));
         setCommentData(latestComment)
-    },[comments])
+    }, [comments])
 
     const { mutateAsync } = useMutation({
         mutationFn: async (commentInfo) => {
@@ -97,10 +97,10 @@ const SurveyDetails = () => {
         }
     }
 
-    
 
 
-  
+
+
 
     if (isLoading) {
         return <div className="flex flex-col m-8 rounded shadow-md animate-pulse">
@@ -171,9 +171,9 @@ const SurveyDetails = () => {
                     }
 
                     <div className="space-y-6">
-                       {
-                        commentData.map(resentComment => <Comment key={resentComment._id} resentComment={resentComment}></Comment>)
-                       }
+                        {
+                            commentData.map(resentComment => <Comment key={resentComment._id} resentComment={resentComment}></Comment>)
+                        }
                     </div>
 
                     <div>

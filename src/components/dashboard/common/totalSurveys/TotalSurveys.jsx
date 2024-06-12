@@ -41,13 +41,20 @@ const TotalSurveys = () => {
                                 <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">{role === 'Admin' ? "Status" : "Update"}</th>
 
                                 {
-                                  role === 'Admin' && <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Update Status</th>
+                                    role === 'Admin' && <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Update Status</th>
                                 }
-                                
+
                             </tr>
                         </thead>
 
-                        <TableRow surveyCards={surveyCards} isLoading={isLoading} refetch={refetch} role={role}></TableRow>
+                        <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                            {
+                                surveyCards.map((surveyCard, index) =><TableRow key={surveyCard._id} index={index} surveyCard={surveyCard} isLoading={isLoading} refetch={refetch} role={role}></TableRow>)
+                            }
+
+                        </tbody>
+
+                       
 
                     </table>
                 </div>
