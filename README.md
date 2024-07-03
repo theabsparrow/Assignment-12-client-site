@@ -29,6 +29,14 @@ https://surveyatlas-1e204.firebaseapp.com/
 12. npm install stripe
 13. npm install react datepicker
 
+This website or this project totally based on survey. About five categories surveyes are available here. Every survey contains three questions. If a user first login in this site, by default his role will be a guest. If a user  wants to vote he needs to create an account. By paying certain amount of money an user can be a pro user. a pro user gets an extra facility with the power of do comment.  If a user dont like the survey or its content he can report the survey. after seeing thee reporting status Admin can unpublish the survey if he wants. Live link is above  please check.
+
+# Here is the admin and surveyor email and pass
+admin email: abulbashar@gmail.com
+admin pass: Bashar15@
+surveyor email: stevesmith@gmail.com
+surveyo pass: Bashar15@
+
 ## The characteristrics and features of my projects
 
 # Features
@@ -40,3 +48,25 @@ https://surveyatlas-1e204.firebaseapp.com/
 - This website has a firebase authentiction system so user can create account for better user experience
 
 # Characteristics
+- user friendly design: I tried to keep an eye touching design that can make user a better experience.
+
+- Security: Implementing robust security measures to protect user data and maintain the integrity of our website.
+
+- Scalability: Designed with scalability in mind, our website can handle increased traffic and content expansion without compromising performance.
+
+- SEO-Friendly: Optimized for search engines, our website follows best practices to improve visibility and ranking on search engine results pages (SERPs).
+
+- User Feedback: Incorporating mechanisms for gathering user feedback to continuously improve and enhance the website based on user preferences and needs.
+
+# technologies I have used in this project
+- I have used React js
+- I have used Tailwind css for CSS frame work
+- Daisy UI is used as the tailwind component library
+- For backend development I have iused mongodb, express, node
+- after all this is a mern stack project
+  
+# if you want to run this project, you need to do the following things
+- first clone the projects client site
+- then clone the projects server site
+- then run the command npm i
+- next run the command npm run dev
