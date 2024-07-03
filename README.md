@@ -8,11 +8,13 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
-The name of my website is Survey Atlass
-here  is the live link of firebase: 
+# The name of my website is Survey Atlass
+here  is the live link of firebase:
+https://surveyatlas-1e204.web.app/,
+https://surveyatlas-1e204.firebaseapp.com/
 
 
-The NPm packages I have used:
+## The NPm packages I have used:
 1. npm install react helmet
 2. npm install react icon
 3. npm install react proptypes
@@ -26,3 +28,15 @@ The NPm packages I have used:
 11. npm install swiper
 12. npm install stripe
 13. npm install react datepicker
+
+## The characteristrics and features of my projects
+
+# Features
+- This website has a voting system
+- This website has a conditional user dashboard
+- This website contains a reliable payment system
+- User can report if they don't like the survey as it is a survey website
+- From the dashboard Admin can control user management and survey publishment
+- This website has a firebase authentiction system so user can create account for better user experience
+
+# Characteristics
